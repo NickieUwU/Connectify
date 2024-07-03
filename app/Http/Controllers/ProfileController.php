@@ -28,6 +28,8 @@ class ProfileController extends Controller
     }
     public function openEdit($username)
     {
-        return view('editProfile');
+        session_start();
+        if($username != $_SESSION['username']) return redirect('/editProfile/'.$_SESSION['username']);
+        else return view('editProfile');
     }
 }

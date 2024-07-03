@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
@@ -7,8 +8,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SigninController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home');
-Route::view('/home', 'home');
+Route::get('/', [AppController::class, 'open']);
+Route::get('/home', [AppController::class, 'open']);
 Route::view('/about', 'about');
 
 

@@ -15,7 +15,6 @@ use App\Http\Controllers\DbHandlerController;
     {
         $username = $user["Username"];
     }
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +29,7 @@ use App\Http\Controllers\DbHandlerController;
     <div class="container-fluid">
         <div class="row border h-100">
             <div class="col-lg-2 col-md-1 border d-flex flex-column align-items-center justify-content-top nav-column">
-                <a href="/home" class="{{request()->is('home') ? $isStyle : $notStyle}} mt-5">Home</a><br>
+                <a href="/home" class="{{request()->is('home') || request()->is('/') ? $isStyle : $notStyle}} mt-5">Home</a><br>
                 <a href="/search" class="{{request()->is('search') ? $isStyle : $notStyle}} mt-4">Search</a><br>
                 <a href="/create" class="{{request()->is('create') ? $isStyle : $notStyle}} mt-4">Create</a><br>
                 <a href="/profile/{{$username}}" class="{{request()->is("profile/$username") ? $isStyle : $notStyle}} mt-4">Profile</a>
