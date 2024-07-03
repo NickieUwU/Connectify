@@ -1,21 +1,9 @@
 <?php
-
-use App\Http\Controllers\DbHandlerController;
-
-    session_start();
-    if(!isset($_SESSION["login"]) || $_SESSION["login"] == false)
-    {
-        session_destroy();
-        return view("about");
-    }
+    use App\Http\Controllers\AppController;
+    use App\Http\Controllers\DbHandlerController;
     $isStyle = "btn btn-primary";
     $notStyle = "btn btn-outline-primary";
-    $users = DbHandlerController::queryAll("SELECT * FROM Users WHERE Username=?", $_SESSION["username"]);
-    foreach($users as $user)
-    {
-        $username = $user["Username"];
-    }
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

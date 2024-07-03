@@ -6,6 +6,6 @@
     <title>Connectify / Home</title>
 </head>
 <body>
-    <x-app></x-app>
+    <x-app username="{{$_SESSION['username']}}"></x-app>
 </body>
 </html>

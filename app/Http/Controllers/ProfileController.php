@@ -8,6 +8,7 @@ class ProfileController extends Controller
 {
     public function open($username)
     {
+        session_start();
         $users = DbHandlerController::queryAll("SELECT * FROM Users WHERE Username=?", $username);
         if($users == null)
         {
@@ -19,12 +20,31 @@ class ProfileController extends Controller
             $joinDate = $user["JoinDate"];
             $bio = $user["Bio"];
         }
+        $action = "";
+        if ($username == $_SESSION['username']) 
+        {
+            $action = "<a href='/editProfile/$username' class='btnedit btn btn-secondary mt-5 fs-6'>Edit Profile</a>";
+        }
+        else
+        {
+            $action = "<form action='/profile/$username' method='post'>
+                            <button type='submit' class='btnedit btn btn-secondary mt-5 fs-6'>Follow</button>
+                        </form> ";
+        }
+        
         return view('profile', [
             'username' => $username,
             'name' => $name,
             'bio' => $bio,
-            'joinDate' => $joinDate
+            'joinDate' => $joinDate,
+            'action' => $action
         ]);
+    }
+
+    public function follow($username)
+    {
+        session_start();
+        
     }
     public function openEdit($username)
     {
@@ -32,4 +52,5 @@ class ProfileController extends Controller
         if($username != $_SESSION['username']) return redirect('/editProfile/'.$_SESSION['username']);
         else return view('editProfile');
     }
+
 }

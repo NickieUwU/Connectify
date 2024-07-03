@@ -22,7 +22,9 @@ Route::post('/signin', [SigninController::class, 'signin']);
 Route::get('/search', [SearchController::class, 'open']);
 Route::get('search/{search}', [SearchController::class, 'load']);
 
-Route::get('/create', [PostController::class, 'openCreate']);
+Route::get('/create', [PostController::class, 'openCreate'])->name('create');
+Route::post('/create', [PostController::class, 'makePost']);
 
 Route::get('/profile/{username}', [ProfileController::class, 'open']);
+Route::post('/profile/{username}', [ProfileController::class, 'follow']);
 Route::get('/editProfile/{username}', [ProfileController::class, 'openEdit']);

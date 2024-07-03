@@ -8,9 +8,13 @@
 <body>
     <table class="table table-secondary table-hover">
         <tbody>
-            <td><a href="/EditProfile">Edit Profile</a></td>
+            <tr>
+                <td><i class="bi bi-flag-fill"></i>Report User</td>
+            </tr>
+            <tr>
+                <td><i class="bi bi-slash-circle"></i>Block</td>
+            </tr>
         </tbody>
     </table>
-    
 </body>
 </html>

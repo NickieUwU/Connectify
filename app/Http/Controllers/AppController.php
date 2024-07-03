@@ -8,6 +8,8 @@ class AppController extends Controller
 {
     public function open()
     {
+        
+        session_start();
         return view('home');
     }
 }

@@ -1,3 +1,6 @@
+@php
+    session_start();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,9 @@
     <title>Connectify / Search</title>
 </head>
 <body>
-    <x-app></x-app>
+    <x-app username="{{$_SESSION['username']}}"></x-app>
+    <div class="container-fluid">
+        
+    </div>
 </body>
 </html>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 </head>
 <body>
-    <x-app>
+    <x-app username="{{$_SESSION['username']}}">
     <div class="container-fluid">
             <div class="row border">
                 <div class="col-lg-4 border">
@@ -16,7 +16,7 @@
                         <img src="{{asset('images/DefaultPFP.png')}}" alt="Profile Picture" class="rounded-circle img-fluid">
                     </div>
                 </div>
-                <div class="col-lg-4 border">
+                <div class="col-lg-3 border">
                     <div class="fullname border">
                         <div class="name mb-3">
                             {{$name}}
@@ -29,8 +29,8 @@
                 <div class="col-lg-3 d-flex flex-column align-items-center justify-content-center border">
                 <span class="bi bi-calendar3"> Joined {{$joinDate}}</span>
                 </div>
-                <div class="col-lg-1 text-center border">
-                    <a href="/editProfile/{{$username}}" class="btnedit btn btn-secondary fs-6">Edit Profile</a>
+                <div class="col-lg-2 text-center border">
+                    {!! $action !!}
                 </div>
             </div>
             <div class="row">

@@ -6,6 +6,6 @@
     <title>Connectify / EditProfile</title>
 </head>
 <body>
-    
+    <x-app username="{{$_SESSION['username']}}"></x-app>
 </body>
 </html>
