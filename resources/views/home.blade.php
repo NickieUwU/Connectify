@@ -6,6 +6,11 @@
     <title>Connectify / Home</title>
 </head>
 <body>
-    <x-app username="{{$_SESSION['username']}}"></x-app>
+    <x-app username="{{$_SESSION['username']}}">
+       <div class="container-fluid">
+            <x-HomePost loggedusername="{{$_SESSION['username']}}"></x-HomePost>
+        </div> 
+    </x-app>
+    
 </body>
 </html>
