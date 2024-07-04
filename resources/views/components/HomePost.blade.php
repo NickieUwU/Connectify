@@ -75,6 +75,7 @@
                     data: jQuery('#addLikeForm').serialize(),
                     type: 'POST',
                     success: (result) => {
+                        {{$likes++}}
                     },
                     error: (xhr, status, error) => {
                         console.error(xhr.responseText);

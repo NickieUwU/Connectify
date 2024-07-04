@@ -29,15 +29,30 @@ class PostController extends Controller
         $data = new \stdClass();
         $data->ID = $request->ID;
         $data->postID = $request->postID;
-        $IsLiked = 'N/A';
-        $likes = DbHandlerController::queryAll('SELECT * FROM IsLiked WHERE ID=? AND PostID=?', $data->ID, $data->postID);
+        $IsLiked = 0;
+        $likes = DbHandlerController::queryAll('SELECT * FROM IsLiked WHERE ID=? AND Post_ID=?', $data->ID, $data->postID);
         foreach($likes as $like)
         {
             $IsLiked = $like['IsLiked'];
         }
-        if($IsLiked == 'N/A')
+        $posts = DbHandlerController::queryAll('SELECT * FROM Posts WHERE Post_ID=?', $data->postID);
+        foreach($posts as $post)
         {
+            $likesCount = $post['Likes'];
+        }
+        if($IsLiked == 0)
+        {
+            //Adding like
             DbHandlerController::query('INSERT INTO IsLiked (ID, Post_ID, IsLiked) VALUES (?, ?, ?)', $data->ID, $data->postID, 1);
+            $likesCount++;
+            DbHandlerController::query('UPDATE Posts SET Likes = ? WHERE Post_ID=?', $likesCount, $data->postID);
+        }
+        else if($IsLiked == 1)
+        {
+            //Deleting like
+            DbHandlerController::query('DELETE FROM IsLiked WHERE ID=? AND Post_ID=?', $data->ID, $data->postID);
+            $likesCount--;
+            DbHandlerController::query('UPDATE Posts SET Likes = ? WHERE Post_ID=?', $likesCount, $data->postID);
         }
         return response()->json(['IsLiked' => $IsLiked]);
     }
