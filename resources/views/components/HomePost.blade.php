@@ -55,7 +55,7 @@
             <form action="{{url('ajaxupload')}}" method="post" id="addLikeForm">
                 <input type="hidden" name="ID" value="{{$ID}}">
                 <input type="hidden" name="postID" value="{{$postID}}">
-                <button type="submit" class="{{$heartStyle}}" id="heart"> {{$likes}}</button>
+                <button type="submit" id="btnHeart" class="{{$heartStyle}}" id="heart"> {{$likes}}</button>
             </form>
             
         </div>
@@ -75,7 +75,7 @@
                     data: jQuery('#addLikeForm').serialize(),
                     type: 'POST',
                     success: (result) => {
-                        {{$likes++}}
+                        
                     },
                     error: (xhr, status, error) => {
                         console.error(xhr.responseText);
