@@ -23,3 +23,9 @@ textarea:hover
 {
     cursor: pointer;
 }
+
+button
+{
+    background-color: white;
+    border: white;
+}
