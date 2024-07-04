@@ -1,0 +1,8 @@
+body 
+{
+    overflow: hidden;
+}
+.scroll {
+    height: 50%; /* Adjust the height as needed */
+    overflow-y: auto;
+}

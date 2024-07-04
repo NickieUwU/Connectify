@@ -5,20 +5,22 @@
     $likes = 'N/A';
     $postID = 0;
     $isLiked = 0;
-    $users = DbHandlerController::queryAll('SELECT * FROM users ORDER BY RAND() LIMIT 1');
+    $posts = DbHandlerController::queryAll('SELECT * FROM Posts ORDER BY RAND() LIMIT 1');
+    foreach($posts as $post)
+    {
+        $postID = $post['Post_ID'];
+        $ID = $post['ID'];
+        $content = $post['Content'];
+        $likes = $post['Likes'];
+    }
+    $users = DbHandlerController::queryAll('SELECT * FROM users WHERE ID=?', $ID);
     foreach($users as $user)
     {
         $ID = $user['ID'];
         $name = $user['Name'];
         $username = $user['Username'];
     }
-    $posts = DbHandlerController::queryAll('SELECT * FROM Posts WHERE ID=?', $ID);
-    foreach($posts as $post)
-    {
-        $postID = $post['Post_ID'];
-        $content = $post['Content'];
-        $likes = $post['Likes'];
-    }
+    
     $likeds = DbHandlerController::queryAll('SELECT * From IsLiked WHERE ID=? AND Post_ID=?', $ID, $postID);
     foreach($likeds as $liked)
     {
