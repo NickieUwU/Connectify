@@ -49,8 +49,23 @@ class ProfileController extends Controller
     public function openEdit($username)
     {
         session_start();
-        if($username != $_SESSION['username']) return redirect('/editProfile/'.$_SESSION['username']);
-        else return view('editProfile');
+        $users = DbHandlerController::queryAll("SELECT * FROM Users WHERE Username=?", $username);
+        foreach($users as $user)
+        {
+            $name = $user["Name"];
+            $bio = $user['Bio'];
+        }
+        if($username != $_SESSION['username']) return redirect('/editProfile/'.$_SESSION['username'])->with([
+            'name' => $name,
+            'username' => $username,
+            'bio' => $bio
+        ]);
+        else return view('editProfile')->with([
+            'name' => $name,
+            'username' => $username,
+            'bio' => $bio
+        ]);
+        
     }
 
 }
