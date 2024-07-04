@@ -18,3 +18,8 @@ textarea:hover
 {
     cursor: default;
 }
+
+.bi:hover
+{
+    cursor: pointer;
+}

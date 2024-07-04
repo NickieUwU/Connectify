@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AppController::class, 'open']);
 Route::get('/home', [AppController::class, 'open']);
+Route::post('/ajaxupload', [PostController::class, 'addLike']);
 Route::view('/about', 'about');
 
 
