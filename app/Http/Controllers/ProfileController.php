@@ -49,6 +49,7 @@ class ProfileController extends Controller
     public function openEdit($username)
     {
         session_start();
+        $result = "";
         $users = DbHandlerController::queryAll("SELECT * FROM Users WHERE Username=?", $username);
         foreach($users as $user)
         {
@@ -63,9 +64,26 @@ class ProfileController extends Controller
         else return view('editProfile')->with([
             'name' => $name,
             'username' => $username,
-            'bio' => $bio
+            'bio' => $bio,
+            'result' => $result
         ]);
         
+    }
+
+    public function save(Request $request)
+    {
+        session_start();
+        $name = $request->Name;
+        $username = $request->Username;
+        $bio = $request->Bio;
+        DbHandlerController::query('UPDATE Users SET Name = ?, Username = ? AND Bio = ? WHERE Username=?', $name, $username, $bio, $username);
+        $result = "saves made successfully";
+        return view('editProfile')->with([
+            'name' => $name,
+            'username' => $username,
+            'bio' => $bio,
+            'result' => $result
+        ]);     
     }
 
 }

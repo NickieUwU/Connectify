@@ -19,13 +19,19 @@
             <div class="row">
                 <form action="{{url('editProfile/'.$_SESSION['username'])}}" method="post">
                     <div class="col-lg-12 text-center mt-5">
-                        <input type="text" class="text-center" placeholder="{{$name}}">
+                        <input type="text" class="text-center" name="Name" placeholder="{{$name}}" max="30">
                     </div>
                     <div class="col-lg-12 text-center mt-2">
-                        <input type="text" class="text-center" placeholder="{{$username}}">
+                        <input type="text" class="text-center" name="Username" placeholder="{{$username}}" max="15">
                     </div>
                     <div class="col-lg-12 text-center mt-2 border">
-                        <textarea class="bio" class="w-100" placeholder="{{$bio}}"></textarea>
+                        <textarea class="bio w-100" class="w-100" name="Bio" placeholder="{{$bio}}" maxlength="80"></textarea>
+                    </div>
+                    <div class="col-lg-12 text-center mt-2">
+                        <input type="submit" class="btn btn-secondary" value="Save">
+                    </div>
+                    <div class="col-lg-12">
+                        {{$result}}
                     </div>
                 </form>
             </div>
