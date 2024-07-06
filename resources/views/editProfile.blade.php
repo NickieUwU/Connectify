@@ -30,7 +30,7 @@
                     <div class="col-lg-12 text-center mt-2">
                         <input type="submit" class="btn btn-secondary" value="Save">
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 text-center">
                         {{$result}}
                     </div>
                 </form>

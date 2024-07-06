@@ -59,7 +59,8 @@ class ProfileController extends Controller
         if($username != $_SESSION['username']) return redirect('/editProfile/'.$_SESSION['username'])->with([
             'name' => $name,
             'username' => $username,
-            'bio' => $bio
+            'bio' => $bio,
+            'result' => $result
         ]);
         else return view('editProfile')->with([
             'name' => $name,
@@ -76,7 +77,9 @@ class ProfileController extends Controller
         $name = $request->Name;
         $username = $request->Username;
         $bio = $request->Bio;
-        DbHandlerController::query('UPDATE Users SET Name = ?, Username = ? AND Bio = ? WHERE Username=?', $name, $username, $bio, $username);
+        DbHandlerController::query("UPDATE Users SET `Name` = ?, Username = ?, Bio = ? WHERE Username = ?", $name, $username, $bio, $_SESSION['username']);
+        
+        
         $result = "saves made successfully";
         return view('editProfile')->with([
             'name' => $name,
