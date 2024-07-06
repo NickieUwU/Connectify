@@ -6,6 +6,7 @@
     <title>Connectify / {{$username}}</title>
     <script src="{{asset('js/ProfileMenu.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
+    <script src="{{asset('js/Profile.js')}}"></script>
 </head>
 <body>
     <x-app username="{{$_SESSION['username']}}">
@@ -29,7 +30,11 @@
                 <div class="col-lg-3 d-flex flex-column align-items-center justify-content-center border">
                 <span class="bi bi-calendar3"> Joined {{$joinDate}}</span>
                 </div>
-                <div class="col-lg-2 text-center border">
+                <div class="col-lg-2 text-center border mt-2">
+                    @if($username != $_SESSION['username'])
+                        <span class="bi bi-three-dots mt-3"></span>
+                    @endif
+                    <br>
                     {!! $action !!}
                 </div>
             </div>

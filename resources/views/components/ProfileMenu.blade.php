@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 </head>
 <body>
-    <table class="table table-secondary table-hover">
+    <table class="table table-secondary table-hover w-25 text-center">
         <tbody>
             <tr>
                 <td><i class="bi bi-flag-fill"></i>Report User</td>
