@@ -77,7 +77,18 @@ class ProfileController extends Controller
         $name = $request->Name;
         $username = $request->Username;
         $bio = $request->Bio;
-        DbHandlerController::query("UPDATE Users SET `Name` = ?, Username = ?, Bio = ? WHERE Username = ?", $name, $username, $bio, $_SESSION['username']);
+        if(!empty($name))
+        {
+            DbHandlerController::query("UPDATE Users SET `Name` = ? WHERE Username = ?", $name, $_SESSION['username']);
+        }
+        if(!empty($username))
+        {
+            DbHandlerController::query("UPDATE Users SET Username = ? WHERE Username = ?", $username, $_SESSION['username']);
+        }
+        if(!empty($bio))
+        {
+            DbHandlerController::query("UPDATE Users SET Bio = ? WHERE Username = ?", $bio, $_SESSION['username']);
+        }
         
         
         $result = "saves made successfully";
