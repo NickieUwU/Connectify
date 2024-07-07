@@ -27,12 +27,12 @@
                             {{'@'.$username}}
                         </div>
                     </div>
-                    <span>
                         
-                    </span>
                 </div>
                 <div class="col-lg-3 d-flex flex-column align-items-center justify-content-center border">
                     <span class="bi bi-calendar3"> Joined {{$joinDate}}</span>
+                    {{$followers." followers"}}
+                    {{$following." following"}}
                 </div>
                 <div class="col-lg-2 text-center border mt-2">
                     @if($username != $_SESSION['username'])

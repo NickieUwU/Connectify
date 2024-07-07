@@ -55,7 +55,7 @@ class ProfileController extends Controller
             'joinDate' => $joinDate,
             'followers' => $followers,
             'following' => $following,
-            'action' => $action
+            'action' => $action  
         ]);
     }
 
@@ -73,12 +73,17 @@ class ProfileController extends Controller
         {
             $isFollowed = $follow['isFollowed'];
         }
-        $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE Follower=? AND `Following`=?', $follower, $data->username);
-        foreach($users as $user)
+        $users1 = DbHandlerController::queryAll('SELECT * FROM Users WHERE Username=?', $data->username);
+        foreach($users1 as $user1)
         {
-            $followers = $user['Followers'];
-            $following = $user['Following'];
+            $followers = $user1['Followers'];
         }
+        $users2 = DbHandlerController::queryAll('SELECT * FROM Users WHERE Username=?', $follower);
+        foreach($users2 as $user2)
+        {
+            $following = $user2['Following'];
+        }
+        
         if($isFollowed == 0)
         {
             //adding a follow
@@ -86,6 +91,8 @@ class ProfileController extends Controller
             $followers++;
             $following++;
             DbHandlerController::query('INSERT INTO IsFollowed (Follower, `Following`, isFollowed) VALUES (?, ?, ?)', $follower, $data->username, $isFollowed);
+            DbHandlerController::query('UPDATE Users SET Followers=? WHERE Username=?', $followers, $data->username);
+            DbHandlerController::query('UPDATE Users SET `Following`=? WHERE Username=?', $following, $follower);
         }
         else
         {
@@ -94,7 +101,8 @@ class ProfileController extends Controller
             $followers--;
             $following--;
             DbHandlerController::query('DELETE FROM IsFollowed WHERE Follower=? AND `Following`=?', $follower, $data->username);
-
+            DbHandlerController::query('UPDATE Users SET Followers=? WHERE Username=?', $followers, $data->username);
+            DbHandlerController::query('UPDATE Users SET `Following`=? WHERE Username=?', $following, $follower);
         }
         return response()->json(['Username' => $data->username]);
     }
