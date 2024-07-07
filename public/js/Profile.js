@@ -13,4 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
             this.innerHTML = 'Follow';
         }
     });
+    document.getElementById('profileMenuDots').addEventListener('click', function() {
+        let profileMenu = document.getElementById('profileMenu');
+        if(profileMenu.classList.contains('hidden'))
+        {
+            profileMenu.classList.remove('hidden');
+            profileMenu.classList.add('visible');
+        }
+        else if(profileMenu.classList.contains('visible'))
+        {
+            profileMenu.classList.remove('visible');
+            profileMenu.classList.add('hidden');
+        }
+    });
 });

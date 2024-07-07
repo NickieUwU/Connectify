@@ -8,6 +8,7 @@
     <script src="{{asset('js/ProfileMenu.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
     <script src="{{asset('js/Profile.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('css/profileMenu.css')}}">
 </head>
 <body>
     <x-app username="{{$_SESSION['username']}}">
@@ -30,13 +31,16 @@
                         
                 </div>
                 <div class="col-lg-3 d-flex flex-column align-items-center justify-content-center border">
-                    <span class="bi bi-calendar3"> Joined {{$joinDate}}</span>
-                    {{$followers." followers"}}
-                    {{$following." following"}}
+                    <span class="bi bi-calendar3 fs-5"> Joined {{$joinDate}}</span>
+                    <br><br><br>
+                    <div class="inline-links">
+                        <a href="/profile/{{$username}}/followers">{{$followers." followers"}}</a>
+                        <a href="/profile/{{$username}}/following">{{$following." following"}}</a>
+                    </div>
                 </div>
                 <div class="col-lg-2 text-center border mt-2">
                     @if($username != $_SESSION['username'])
-                        <span class="bi bi-three-dots mt-3"></span>
+                        <span id="profileMenuDots" class="bi bi-three-dots mt-3"></span>
                     @endif
                     <br>
                     {!! $action !!}
@@ -46,6 +50,9 @@
                 <div class="col-lg-12 text-center h-auto border">
                     {{$bio}}
                 </div>
+            </div>
+            <div id="profileMenu" class="ProfileMenu hidden border">
+                <x-ProfileMenu username="{{$username}}"></x-ProfileMenu>
             </div>
         </div>
     </x-app>

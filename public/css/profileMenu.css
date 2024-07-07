@@ -1,0 +1,12 @@
+.ProfileMenu
+{
+    position: absolute;
+    top: 5%;
+    right: 15%;
+}
+
+a
+{
+    color: black;
+    text-decoration: none;
+}

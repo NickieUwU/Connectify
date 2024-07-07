@@ -9,7 +9,7 @@
 
 .name
 {
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .username
@@ -31,4 +31,27 @@
 .bi:hover
 {
     cursor: pointer;
+}
+
+.inline-links a 
+{
+    display: inline;
+    margin-right: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.inline-links a:hover
+{
+    text-decoration: underline;
+}
+
+.visible
+{
+    display: block;
+}
+
+.hidden
+{
+    display: none;
 }

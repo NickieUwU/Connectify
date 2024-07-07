@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SigninController;
@@ -30,3 +31,5 @@ Route::get('/profile/{username}', [ProfileController::class, 'open']);
 Route::post('/ajaxfollow', [ProfileController::class, 'follow']);
 Route::get('/editProfile/{username}', [ProfileController::class, 'openEdit'])->name('editProfile');
 Route::post('/editProfile/{username}', [ProfileController::class, 'save']);
+
+Route::get('/report/{username}', [ReportController::class, 'openRep']);
