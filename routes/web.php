@@ -27,6 +27,6 @@ Route::get('/create', [PostController::class, 'openCreate'])->name('create');
 Route::post('/create', [PostController::class, 'makePost']);
 
 Route::get('/profile/{username}', [ProfileController::class, 'open']);
-Route::post('/profile/{username}', [ProfileController::class, 'follow']);
+Route::post('/ajaxfollow', [ProfileController::class, 'follow']);
 Route::get('/editProfile/{username}', [ProfileController::class, 'openEdit'])->name('editProfile');
 Route::post('/editProfile/{username}', [ProfileController::class, 'save']);

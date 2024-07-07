@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connectify / {{$username}}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('js/ProfileMenu.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
     <script src="{{asset('js/Profile.js')}}"></script>
@@ -45,5 +46,23 @@
             </div>
         </div>
     </x-app>
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $('#addFollow').on('submit', (event) => {
+                event.preventDefault();
+                $.ajax({
+                    url: '/ajaxfollow',
+                    data: jQuery('#addFollow').serialize(),
+                    type: 'POST',
+                    success: (res) => {
+                        console.log(res);
+                    },
+                    error: (xhr, status, error) => {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

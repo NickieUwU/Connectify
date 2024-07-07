@@ -27,7 +27,8 @@ class ProfileController extends Controller
         }
         else
         {
-            $action = "<form action='/profile/$username' method='post'>
+            $action = "<form action='/ajaxfollow' method='post' id='addFollow'>
+                            <input type='hidden' name='username' value='$username'>
                             <button type='submit' class='btnedit btn btn-secondary mt-5 fs-6'>Follow</button>
                         </form> ";
         }
@@ -41,10 +42,31 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function follow($username)
+    public function follow(Request $request)
     {
         session_start();
-        
+        $data = new \stdClass();
+        $data->username = $request->username; //the dude who is receiving a follow
+        $follower = $_SESSION['username']; //the dude that clicks the follow button
+        $isFollowed = 0;
+        $users = DbHandlerController::queryAll('SELECT * FROM IsFollowed WHERE Follower=? AND `Following`=?', $follower, $data->username);
+        foreach($users as $user)
+        {
+            $isFollowed = $user['isFollowed'];
+        }
+        if($isFollowed == 0)
+        {
+            //adding a follow
+            $isFollowed++;
+            DbHandlerController::query('INSERT INTO IsFollowed (Follower, `Following`, isFollowed) VALUES (?, ?, ?)', $follower, $data->username, $isFollowed);
+        }
+        else
+        {
+            //removing a follow
+            $isFollowed--;
+            DbHandlerController::query('DELETE FROM IsFollowed WHERE Follower=? AND `Following`=?', $follower, $data->username);
+        }
+        return response()->json(['Username' => $data->username]);
     }
     public function openEdit($username)
     {
