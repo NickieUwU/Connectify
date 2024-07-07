@@ -10,6 +10,7 @@ class ProfileController extends Controller
     {
         session_start();
         $users = DbHandlerController::queryAll("SELECT * FROM Users WHERE Username=?", $username);
+        $isFollowed = 0;
         if($users == null)
         {
             return redirect('/home');
@@ -20,7 +21,19 @@ class ProfileController extends Controller
             $joinDate = $user["JoinDate"];
             $bio = $user["Bio"];
         }
+        $follows = DbHandlerController::query('SELECT isFollowed FROM IsFollowed WHERE Follower=? AND `Following`=?', $_SESSION['username'], $username);
+        foreach($follows as $follow)
+        {
+            $isFollowed = $follow["isFollowed"];
+        }
         $action = "";
+        $text = "Follow";
+        $class = "btn btn-secondary mt-5 fs-6";
+        if($isFollowed == 1)
+        {
+            $text = "Following";
+            $class = "btn btn-outline-danger mt-5 fs-6";
+        }
         if ($username == $_SESSION['username']) 
         {
             $action = "<a href='/editProfile/$username' class='btnedit btn btn-secondary mt-5 fs-6'>Edit Profile</a>";
@@ -29,7 +42,7 @@ class ProfileController extends Controller
         {
             $action = "<form action='/ajaxfollow' method='post' id='addFollow'>
                             <input type='hidden' name='username' value='$username'>
-                            <button type='submit' class='btnedit btn btn-secondary mt-5 fs-6'>Follow</button>
+                            <button type='submit' id='btnFollow' class='$class'>$text</button>
                         </form> ";
         }
         
