@@ -20,6 +20,8 @@ class ProfileController extends Controller
             $name = $user["Name"];
             $joinDate = $user["JoinDate"];
             $bio = $user["Bio"];
+            $followers = $user["Followers"];
+            $following = $user["Following"];
         }
         $follows = DbHandlerController::query('SELECT isFollowed FROM IsFollowed WHERE Follower=? AND `Following`=?', $_SESSION['username'], $username);
         foreach($follows as $follow)
@@ -51,6 +53,8 @@ class ProfileController extends Controller
             'name' => $name,
             'bio' => $bio,
             'joinDate' => $joinDate,
+            'followers' => $followers,
+            'following' => $following,
             'action' => $action
         ]);
     }
@@ -62,22 +66,35 @@ class ProfileController extends Controller
         $data->username = $request->username; //the dude who is receiving a follow
         $follower = $_SESSION['username']; //the dude that clicks the follow button
         $isFollowed = 0;
-        $users = DbHandlerController::queryAll('SELECT * FROM IsFollowed WHERE Follower=? AND `Following`=?', $follower, $data->username);
+        $followers = 0;
+        $following = 0;
+        $follows = DbHandlerController::queryAll('SELECT * FROM IsFollowed WHERE Follower=? AND `Following`=?', $follower, $data->username);
+        foreach($follows as $follow)
+        {
+            $isFollowed = $follow['isFollowed'];
+        }
+        $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE Follower=? AND `Following`=?', $follower, $data->username);
         foreach($users as $user)
         {
-            $isFollowed = $user['isFollowed'];
+            $followers = $user['Followers'];
+            $following = $user['Following'];
         }
         if($isFollowed == 0)
         {
             //adding a follow
             $isFollowed++;
+            $followers++;
+            $following++;
             DbHandlerController::query('INSERT INTO IsFollowed (Follower, `Following`, isFollowed) VALUES (?, ?, ?)', $follower, $data->username, $isFollowed);
         }
         else
         {
             //removing a follow
             $isFollowed--;
+            $followers--;
+            $following--;
             DbHandlerController::query('DELETE FROM IsFollowed WHERE Follower=? AND `Following`=?', $follower, $data->username);
+
         }
         return response()->json(['Username' => $data->username]);
     }
