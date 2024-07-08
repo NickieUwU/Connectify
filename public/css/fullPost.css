@@ -1,0 +1,31 @@
+.pfp
+{
+    width: 100%;
+}
+
+body a 
+{
+    color: black;
+    text-decoration: none;
+}
+
+body a:hover 
+{
+    text-decoration: underline;
+}
+
+body textarea
+{
+    resize: none;
+}
+
+body textarea:hover
+{
+    cursor: default;
+}
+
+.bi
+{
+    background-color: white;
+    border: white;
+}

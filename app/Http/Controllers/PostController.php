@@ -59,8 +59,38 @@ class PostController extends Controller
 
     public function openFullPost($postID)
     {
+        session_start();
+        $posts = DbHandlerController::queryAll('SELECT * FROM Posts WHERE Post_ID=?', $postID);
+        if(!$posts) return redirect('/home');
+        foreach($posts as $post)
+        {
+            $content = $post['Content'];
+            $ID = $post['ID'];
+            $postDate = $post['PostDate'];
+        }
+        $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE ID=?', $ID);
+        foreach($users as $user)
+        {
+            $posterName = $user['Name'];
+            $posterUsername = $user['Username'];
+        }
+        $likes = DbHandlerController::queryAll('SELECT * FROM IsLiked WHERE ID=? AND Post_ID=?', $ID, $postID);
+        $IsLiked = 0;
+        foreach($likes as $like)
+        {
+            $IsLiked = $like['IsLiked'];
+        }
+        $style = "";
+        if($IsLiked == 0) $style = "bi bi-heart";
+        else  $style = "bi bi-heart-fill";
         return view('post')->with([
-            'postID' => $postID
+            'postID' => $postID,
+            'ID' => $ID,
+            'posterName' => $posterName,
+            'posterUsername' => $posterUsername,
+            'content' => $content,
+            'postDate' => $postDate,
+            'style' => $style
         ]);
     }
 }
