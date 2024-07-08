@@ -56,4 +56,11 @@ class PostController extends Controller
         }
         return response()->json(['IsLiked' => $IsLiked]);
     }
+
+    public function openFullPost($postID)
+    {
+        return view('post')->with([
+            'postID' => $postID
+        ]);
+    }
 }

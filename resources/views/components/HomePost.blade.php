@@ -58,11 +58,10 @@
                 <input type="hidden" name="ID" value="{{$ID}}">
                 <input type="hidden" name="postID" value="{{$postID}}">
                 <button type="submit" id="btnHeart" class="{{$heartStyle}}" id="heart"></button>
-            </form>
-            
+            </form>  
         </div>
         <div class="col-lg-4 col-md-3 col-sm-2 text-center border">
-            <span class="bi bi-chat-dots"></span>
+            <a href="/post/{{$postID}}"><span class="bi bi-chat-dots"></span></a>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-2 text-center border">
             <span class="bi bi-share"></span>

@@ -21,6 +21,9 @@
                 <a href="/search" class="{{request()->is('search') ? $isStyle : $notStyle}} mt-4">Search</a><br>
                 <a href="/create" class="{{request()->is('create') ? $isStyle : $notStyle}} mt-4">Create</a><br>
                 <a href="/profile/{{$username}}" class="{{request()->is("profile/$username") ? $isStyle : $notStyle}} mt-4">Profile</a>
+                @if($username == 'Connectify')
+                    <a href="/reports" class="{{request()->is("reports") ? $isStyle : $notStyle}} mt-4">Reports</a>
+                @endif
             </div>
             <div class="col-lg-8 col-md-7 border">
                 {{$slot}}

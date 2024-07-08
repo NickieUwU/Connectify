@@ -31,7 +31,7 @@
                             @if($postID == 0)
                                 <option value="Bullying">Bullying</option>
                                 <option value="Copyright issues">Copyright issues</option>
-                                <option value="Promotes Terrorism">Promotes Terrorism</option>
+                                <option value="Promotes terrorism">Promotes terrorism</option>
                             @else
                                 <option value="Misleading content">Misleading content</option>
                                 <option value="Copyright issues">Copyright issues</option>
