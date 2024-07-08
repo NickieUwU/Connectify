@@ -41,8 +41,11 @@ class ReportController extends Controller
                 'username' => $username,
                 'postID' => $postID
             ]);
-        }
-        
-        
+        }  
+    }
+
+    public function report(Request $request, $username)
+    {
+        dd($username);
     }
 }

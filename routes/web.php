@@ -33,3 +33,4 @@ Route::get('/editProfile/{username}', [ProfileController::class, 'openEdit'])->n
 Route::post('/editProfile/{username}', [ProfileController::class, 'save']);
 
 Route::get('/report/{username}', [ReportController::class, 'openRep']);
+Route::post('/report/{username}', [ReportController::class, 'report']);

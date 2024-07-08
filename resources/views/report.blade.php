@@ -1,3 +1,8 @@
+@php
+    $redirect = "";
+    if($postID==0) $redirect = "$username";
+    else $redirect = "$postID";
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,17 +26,25 @@
             </div>
             <div class="row mt-5">
                 <div class="col-lg-12 text-center">
-                    <select name="ReportOptions">
-                        @if($postID == 0)
-                            <option value="Bullying">Bullying</option>
-                            <option value="Copyright issues">Copyright issues</option>
-                        @else
-                            <option value="Misleading content">Misleading content</option>
-                            <option value="Copyright issues">Copyright issues</option>
-                        @endif
-                    </select>
+                    <form action="{{$redirect}}" method="post">
+                        <select name="ReportOptions">
+                            @if($postID == 0)
+                                <option value="Bullying">Bullying</option>
+                                <option value="Copyright issues">Copyright issues</option>
+                                <option value="Promotes Terrorism">Promotes Terrorism</option>
+                            @else
+                                <option value="Misleading content">Misleading content</option>
+                                <option value="Copyright issues">Copyright issues</option>
+                                <option value="Spam">Spam</option>
+                            @endif
+                        </select><br><br>
+                        <button type="submit" class="btn btn-secondary">
+                            Report
+                        </button>
+                    </form>
                 </div>
             </div>
+            
         </div>
     </x-app>
 </body>
