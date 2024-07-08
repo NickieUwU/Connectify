@@ -14,7 +14,7 @@
             <table class="table table-hover">
                 <thead>
                     <td>Username</td>
-                    <td>Post link (optional)</td>
+                    <td>Link</td>
                     <td>Report Option</td>
                     <td>Action 1</td>
                     <td>Action 2</td>
@@ -29,9 +29,28 @@
                         $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE ID=?', $repID);
                         foreach($users as $user)
                         {
-                            
+                            $repUsername = $user['Username'];
+                            $link = "";
+                            if($repPostID != 0) $link = url('/post/'.$repPostID);
+                            echo "<tr>
+                                    <td>$repUsername</td>
+                                    <td>$link</td>
+                                    <td>$ReportOption</td>
+                                    <td>
+                                        <form action='/reports' method='POST'>
+                                            <input type='hidden' name='reportID' value='$repID'>
+                                            <input type='submit' class='btn btn-danger' value='suspend account'>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action='/reports' method='POST'>
+                                            <input type='hidden' name='repPostID' value='$repPostID'>
+                                            <input type='submit' class='btn btn-danger' value='delete post'>
+                                        </form>
+                                    </td>
+                                </tr>";
                         }
-                    }
+                    } 
                 @endphp
             </table>
         </div>
