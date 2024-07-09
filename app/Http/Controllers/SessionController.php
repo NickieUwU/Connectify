@@ -29,6 +29,12 @@ class SessionController extends Controller
         foreach($users as $user)
         {
             $hashedpassword = $user['Password'];
+            $suspended = $user['Suspended'];
+            if($suspended == 1)
+            {
+                $error = "Account suspended";
+                return view('login')->with('error', $error);
+            }
             if(!password_verify($password, $hashedpassword))
             {
                 $error = "Wrong username or password";

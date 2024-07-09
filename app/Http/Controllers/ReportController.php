@@ -65,7 +65,6 @@ class ReportController extends Controller
             foreach($posts as $post)
             {
                 $ID = $post['ID'];
-                $content = $post['Content'];
             }
             $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE ID=?', $ID);
             foreach($users as $user)

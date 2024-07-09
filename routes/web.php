@@ -36,5 +36,7 @@ Route::get('/report/{username}', [ReportController::class, 'openRep']);
 Route::post('/report/{username}', [ReportController::class, 'report']);
 
 Route::get('/reports', [ReportController::class, 'openReports']);
+Route::post('/ajaxSuspend', [ProfileController::class, 'suspend']);
+Route::post('/ajaxDeletePost', [PostController::class, 'deleteRepPost']);
 
 Route::get('/post/{postID}', [PostController::class, 'openFullPost']);

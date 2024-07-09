@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use stdClass;
 
 class PostController extends Controller
 {
@@ -92,5 +93,13 @@ class PostController extends Controller
             'postDate' => $postDate,
             'style' => $style
         ]);
+    }
+
+    public function deleteRepPost(Request $request)
+    {
+        $data = new \stdClass();
+        $data->repPostID = $request->input('repPostID');
+        DbHandlerController::query('DELETE FROM Posts WHERE Post_ID=?', $data->repPostID);
+        DbHandlerController::query('DELETE FROM Reports WHERE Post_ID=?', $data->repPostID);
     }
 }

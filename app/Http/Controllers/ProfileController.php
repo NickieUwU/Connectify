@@ -161,4 +161,12 @@ class ProfileController extends Controller
         ]);     
     }
 
+    public function suspend(Request $request)
+    {
+        $data = new \stdClass();
+        $data->reportID = $request->reportID;
+        DbHandlerController::query('UPDATE Users SET Suspended=? WHERE ID=?', 1, $data->reportID);
+        DbHandlerController::query('DELETE FROM Reports WHERE ID=?', $data->reportID);
+        return redirect('/reports');
+    } 
 }
