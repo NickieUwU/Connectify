@@ -1,9 +1,14 @@
-body 
+.pfpComment
+{
+    width: 75%;
+}
+
+body
 {
     overflow: hidden;
 }
 .scroll 
 {
-    height: 50%;
+    height: 100vh;
     overflow-y: auto;
 }

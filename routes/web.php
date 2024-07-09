@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
@@ -40,3 +41,4 @@ Route::post('/ajaxSuspend', [ProfileController::class, 'suspend']);
 Route::post('/ajaxDeletePost', [PostController::class, 'deleteRepPost']);
 
 Route::get('/post/{postID}', [PostController::class, 'openFullPost']);
+Route::post('/ajaxAddComment', [CommentsController::class, 'addComment']);
