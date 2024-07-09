@@ -1,9 +1,9 @@
-<?php
+@php
     use App\Http\Controllers\AppController;
     use App\Http\Controllers\DbHandlerController;
     $isStyle = "btn btn-primary";
     $notStyle = "btn btn-outline-primary";
-    ?>
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +18,7 @@
         <div class="row border h-100">
             <div class="col-lg-2 col-md-1 border d-flex flex-column align-items-center justify-content-top nav-column">
                 <a href="/home" class="{{request()->is('home') || request()->is('/') ? $isStyle : $notStyle}} mt-5">Home</a><br>
-                <a href="/search" class="{{request()->is('search') ? $isStyle : $notStyle}} mt-4">Search</a><br>
+                <a href="/search/posts" class="{{request()->is('search/posts') || request()->is('search/users') ? $isStyle : $notStyle}} mt-4">Search</a><br>
                 <a href="/create" class="{{request()->is('create') ? $isStyle : $notStyle}} mt-4">Create</a><br>
                 <a href="/profile/{{$username}}" class="{{request()->is("profile/$username") ? $isStyle : $notStyle}} mt-4">Profile</a>
                 @if($username == 'Connectify')

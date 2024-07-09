@@ -22,8 +22,8 @@ Route::post('/login', [SessionController::class, 'login']);
 Route::get('/signin', [SigninController::class, 'open']);
 Route::post('/signin', [SigninController::class, 'signin']);
 
-Route::get('/search', [SearchController::class, 'open']);
-Route::get('search/{search}', [SearchController::class, 'load']);
+Route::get('/search/{data}', [SearchController::class, 'open']);
+Route::post('/search/{data}', [SearchController::class, 'search']);
 
 Route::get('/create', [PostController::class, 'openCreate'])->name('create');
 Route::post('/create', [PostController::class, 'makePost']);
