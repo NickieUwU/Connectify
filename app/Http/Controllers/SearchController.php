@@ -49,7 +49,7 @@ class SearchController extends Controller
 
     public function loadUsers($queryInput)
     {
-        $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE Username LIKE ?', $queryInput);
+        $users = DbHandlerController::queryAll("SELECT * FROM `Users` WHERE `Username` LIKE ?", $queryInput);
         foreach($users as $user)
         {
             $name = $user['Name'];
@@ -76,6 +76,25 @@ class SearchController extends Controller
 
     public function loadPosts($queryInput)
     {
-
+        $posts = DbHandlerController::queryAll('SELECT * FROM Posts WHERE Content LIKE ?', $queryInput);
+        $length = 25;
+        foreach($posts as $post)
+        {
+            $postID = $post['Post_ID'];
+            $content = $post['Content'];
+            if(strlen($content) > $length)
+            {
+                $content = substr($content, 0, $length) . '...';
+            }
+            return "
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <a href='".url('/post/'.$postID)."'>
+                           $content Read here 
+                        </a>
+                    </div>
+                </div>
+            ";
+        }
     }
 }

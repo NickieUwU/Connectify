@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use stdClass;
 
+use function Pest\Laravel\json;
+
 class PostController extends Controller
 {
     public function openCreate()
@@ -101,5 +103,17 @@ class PostController extends Controller
         $data->repPostID = $request->input('repPostID');
         DbHandlerController::query('DELETE FROM Posts WHERE Post_ID=?', $data->repPostID);
         DbHandlerController::query('DELETE FROM Reports WHERE Post_ID=?', $data->repPostID);
+    }
+
+    public function deletePostUser(Request $request)
+    {
+        $data = new \stdClass();
+        $data->postID = $request->postID;
+        DbHandlerController::query('DELETE FROM Posts WHERE Post_ID=?', $data->postID);
+        DbHandlerController::query('DELETE FROM Reports WHERE Post_ID=?', $data->postID);
+        DbHandlerController::query('DELETE FROM Comments WHERE Post_ID=?', $data->postID);
+        return response()->json([
+            'postIDDelete' => $data->postID
+        ]);
     }
 }

@@ -9,6 +9,7 @@
     <script src="{{asset('js/Post.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/comments.css')}}">
     <script src="{{asset('js/Comments.js')}}"></script>
+    <script src="{{asset('js/postMenu.js')}}"></script>
 </head>
 <body>
     <x-app username="{{$_SESSION['username']}}">
@@ -34,10 +35,11 @@
                             {{'@'.$posterUsername}}
                         </span>
                     </div>
-                    <div class="col-lg-6 d-flex align-items-center justify-content-center border">
-                        <span>
-                            {{$postDate}}
+                    <div class='col-lg-6 border d-flex align-items-center justify-content-center position-relative'>
+                        <span class='position-absolute top-0 end-0'>
+                            <i class='bi bi-three-dots-vertical' id="tableMenu"></i>
                         </span>
+                        <span>{{$postDate}}</span>
                     </div>
                 </div>
                 <div class="row" style="height: 15vh;">
@@ -62,6 +64,10 @@
                 </form>
                 <x-comments postID="{{$postID}}"></x-comments>
             </div>
+            <div class="menuDiv">
+                <x-postMenu posterUsername="{{$posterUsername}}" postID="{{$postID}}"></x-postMenu>
+            </div>
+            
         </div>
     </x-app>
     <script type="text/javascript">
@@ -73,7 +79,7 @@
                     type: 'POST',
                     data: $('#addComment').serialize(),
                     success: (resp) => {
-
+                        
                     },
                     error: (xhr, status, error) => {
                         console.error(xhr.responseText);
