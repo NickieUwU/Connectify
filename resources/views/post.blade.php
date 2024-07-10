@@ -64,7 +64,7 @@
                 </form>
                 <x-comments postID="{{$postID}}"></x-comments>
             </div>
-            <div class="menuDiv">
+            <div class="menuDiv position-absolute top-0 end-0">
                 <x-postMenu posterUsername="{{$posterUsername}}" postID="{{$postID}}"></x-postMenu>
             </div>
             
