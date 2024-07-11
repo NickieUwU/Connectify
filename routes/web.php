@@ -41,3 +41,5 @@ Route::post('/ajaxDeletePost', [PostController::class, 'deleteRepPost']);
 Route::get('/post/{postID}', [PostController::class, 'openFullPost']);
 Route::post('/ajaxAddComment', [CommentsController::class, 'addComment']);
 Route::post('/ajaxDeletePostUser', [PostController::class, 'deletePostUser']);
+
+Route::post(url()->current(), [SearchController::class, 'search']);

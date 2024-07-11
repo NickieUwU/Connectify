@@ -33,15 +33,34 @@
             <a class="nav-link" href="{{url('profile/'.$username)}}">Profile</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex" method="POST" role="search">
+        <input class="form-control me-2" id="srchBar" name="search" type="search" placeholder="Search" aria-label="Search">
       </form>
     </div>
   </div>
 </nav>
     
     <div class="container-fluid">
-                {{$slot}}
-            </div>
+        {{$slot}}
+    </div>
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $('#srchBar').on('change', (e) => {
+                e.preventDefault();
+                let srchBar = $('#srchBar').val().trim();
+                $.ajax({
+                    url: '{{ url()->current() }}',
+                    method: 'POST',
+                    data: { search: srchBar },
+                    success: (resp) => {
+                        console.log(resp);
+                    },
+                    error: (xhr) => {
+                        console.log(xhr.error);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
