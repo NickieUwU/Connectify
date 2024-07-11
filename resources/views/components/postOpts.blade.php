@@ -21,7 +21,7 @@
                     url: "{{url('ajaxupload')}}",
                     data: jQuery('#addLikeForm').serialize(),
                     type: 'POST',
-                    success: (result) => {
+                    success: (resp) => {
                         
                     },
                     error: (xhr, status, error) => {

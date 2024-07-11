@@ -12,24 +12,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{url('/home')}}">𝕮</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url('create')}}">Create</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+  </div>
+</nav>
+    
     <div class="container-fluid">
-        <div class="row border h-100">
-            <div class="col-lg-2 col-md-1 border d-flex flex-column align-items-center justify-content-top nav-column">
-                <a href="/home" class="{{request()->is('home') || request()->is('/') ? $isStyle : $notStyle}} mt-5">Home</a><br>
-                <a href="/search/posts" class="{{request()->is('search/posts') || request()->is('search/users') ? $isStyle : $notStyle}} mt-4">Search</a><br>
-                <a href="/create" class="{{request()->is('create') ? $isStyle : $notStyle}} mt-4">Create</a><br>
-                <a href="/profile/{{$username}}" class="{{request()->is("profile/$username") ? $isStyle : $notStyle}} mt-4">Profile</a>
-                @if($username == 'Connectify')
-                    <a href="/reports" class="{{request()->is("reports") ? $isStyle : $notStyle}} mt-4">Reports</a>
-                @endif
-            </div>
-            <div class="col-lg-8 col-md-7 border">
                 {{$slot}}
             </div>
-        </div>
-    </div>
-    
 </body>
 </html>

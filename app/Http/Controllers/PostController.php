@@ -57,7 +57,6 @@ class PostController extends Controller
             $likesCount--;
             DbHandlerController::query('UPDATE Posts SET Likes = ? WHERE Post_ID=?', $likesCount, $data->postID);
         }
-        return response()->json(['IsLiked' => $IsLiked]);
     }
 
     public function openFullPost($postID)
