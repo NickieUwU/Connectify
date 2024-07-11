@@ -11,6 +11,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{asset('js/Create.js')}}"></script>
 </head>
+<style>
+    body
+    {
+        overflow: hidden;
+    }
+</style>
 <body>
     <x-app username="{{$_SESSION['username']}}">
         <form action="/create" method="POST">

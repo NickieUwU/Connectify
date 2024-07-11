@@ -29,6 +29,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{url('create')}}">Create</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('profile/'.$username)}}">Profile</a>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
