@@ -20,6 +20,5 @@
             </div>
         </div> 
     </x-app>
-    
 </body>
 </html>

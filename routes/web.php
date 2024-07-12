@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AppController::class, 'open']);
 Route::get('/home', [AppController::class, 'open']);
 Route::post('/ajaxupload', [PostController::class, 'addLike']);
-Route::view('/about', 'about');
-
 
 Route::get('/login', [SessionController::class, 'open']);
 Route::post('/login', [SessionController::class, 'login']);
@@ -22,6 +20,8 @@ Route::post('/login', [SessionController::class, 'login']);
 Route::get('/signin', [SigninController::class, 'open']);
 Route::post('/signin', [SigninController::class, 'signin']);
 
+Route::get('/search/{data}', [SearchController::class, 'open']);
+Route::post('/search/{data}', [SearchController::class, 'search']);
 
 Route::get('/create', [PostController::class, 'openCreate'])->name('create');
 Route::post('/create', [PostController::class, 'makePost']);
@@ -42,4 +42,9 @@ Route::get('/post/{postID}', [PostController::class, 'openFullPost']);
 Route::post('/ajaxAddComment', [CommentsController::class, 'addComment']);
 Route::post('/ajaxDeletePostUser', [PostController::class, 'deletePostUser']);
 
-Route::post(url()->current(), [SearchController::class, 'search']);
+Route::get('/logout', function() {
+    session_start();
+    session_destroy();
+    session_abort();
+    return redirect('/login');
+});
