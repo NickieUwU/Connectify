@@ -12,7 +12,6 @@
 </head>
 <body>
     <x-app username="{{$_SESSION['username']}}">
-    <div class="container-fluid">
             <div class="row border">
                 <div class="col-lg-4 border">
                     <div class="pfp text-center mb-3 mt-3">
@@ -54,7 +53,6 @@
             <div id="profileMenu" class="ProfileMenu hidden border">
                 <x-ProfileMenu username="{{$username}}"></x-ProfileMenu>
             </div>
-        </div>
     </x-app>
     <script type="text/javascript">
         $(document).ready(() => {
