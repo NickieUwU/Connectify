@@ -39,7 +39,16 @@
                 </div>
                 <div class="col-lg-2 text-center border mt-2">
                     @if($username != $_SESSION['username'])
-                        <span id="profileMenuDots" class="bi bi-three-dots mt-3"></span>
+                        <div class="dropdown">
+                            <button class="bg bg-transparent border border-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Menu
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="/report/{{$username}}">Report</a>
+                                </li>
+                            </ul>
+                        </div>
                     @endif
                     <br>
                     {!! $action !!}
@@ -49,9 +58,6 @@
                 <div class="col-lg-12 text-center h-auto border">
                     {{$bio}}
                 </div>
-            </div>
-            <div id="profileMenu" class="ProfileMenu hidden border">
-                <x-ProfileMenu username="{{$username}}"></x-ProfileMenu>
             </div>
     </x-app>
     <script type="text/javascript">

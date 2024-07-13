@@ -9,10 +9,7 @@
 <body>
     <x-app username="{{$_SESSION['username']}}">
        <div class="container-fluid border">
-            <div class="scroll">
-                <x-HomePost loggedusername="{{$_SESSION['username']}}"></x-HomePost><br>
-                <x-HomePost loggedusername="{{$_SESSION['username']}}"></x-HomePost><br>
-                <x-HomePost loggedusername="{{$_SESSION['username']}}"></x-HomePost><br>
+            <div class="scroll" id="Posts">
                 <x-HomePost loggedusername="{{$_SESSION['username']}}"></x-HomePost><br>
                 <x-HomePost loggedusername="{{$_SESSION['username']}}"></x-HomePost><br>
                 <x-HomePost loggedusername="{{$_SESSION['username']}}"></x-HomePost><br>

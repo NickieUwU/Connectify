@@ -83,8 +83,8 @@ class PostController extends Controller
             $IsLiked = $like['IsLiked'];
         }
         $style = "";
-        if($IsLiked == 0) $style = "bi bi-heart";
-        else  $style = "bi bi-heart-fill";
+        if($IsLiked == 0) $style = "post-item bi bi-heart";
+        else  $style = "post-item bi bi-heart-fill";
         return view('post')->with([
             'postID' => $postID,
             'ID' => $ID,

@@ -36,9 +36,19 @@
                         </span>
                     </div>
                     <div class='col-lg-6 border d-flex align-items-center justify-content-center position-relative'>
-                        <span class='position-absolute top-0 end-0'>
-                            <i class='bi bi-three-dots-vertical' id="tableMenu"></i>
-                        </span>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Menu
+                            </button>
+                            <ul class="dropdown-menu">
+                                @if($username != $_SESSION['username'])
+                                    <li><a class="dropdown-item" href="/report/{{$postID}}">Report</a></li>
+                                @elseif($username == $_SESSION['username'])
+                                    <li><a class="dropdown-item" href="#">Delete</a>
+                                @endif
+                                
+                            </ul>
+                        </div>
                         <span>{{$postDate}}</span>
                     </div>
                 </div>

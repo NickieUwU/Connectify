@@ -52,12 +52,22 @@
                 </span>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item {{request()->is('profile/'.$username) ? $disabled : ''}}" href="{{ url('/profile/' . $username) }}">
-                      <span class="bi bi-person-fill tbtn btn-outline-secondary border border-white">View Profile</span>
-                    </a></li>
-                    <li>
-                    <a class="dropdown-item" href="{{ url('/logout') }}">
-                      <span class="btn btn-outline-danger w-100 border border-white bi bi-door-open-fill">Logout</span>
+                      <span class="bi bi-person-fill border border-white">View Profile</span>
                     </a>
+                    </li>
+                    <li>
+                    @if($username == 'Connectify')
+                      <li>
+                        <a class="dropdown-item {{request()->is('reports') ? $disabled : ''}}" href="{{ url('/reports') }}">
+                          <span>Reports</span>
+                        </a>
+                      </li>
+                    @endif
+                      <a class="dropdown-item" href="{{ url('/logout') }}">
+                        <span class="r w-100 border border-white bi bi-door-open-fill">Logout</span>
+                      </a>
+                    </li>
+                    
                 </ul>
             </li>
           </ul>

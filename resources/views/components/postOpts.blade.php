@@ -7,10 +7,10 @@
             </form>  
         </div>
         <div class="col-lg-4 col-md-3 col-sm-2 text-center border">
-            <a href="/post/{{$postID}}"><span class="bi bi-chat-dots"></span></a>
+            <a href="/post/{{$postID}}"><span class="post-item bi bi-chat-dots"></span></a>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-2 text-center border">
-            <span class="bi bi-share"></span>
+            <span class="post-item bi bi-share"></span>
         </div>
     </div>
     <script type="text/javascript">
