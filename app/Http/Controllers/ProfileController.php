@@ -168,5 +168,15 @@ class ProfileController extends Controller
         DbHandlerController::query('UPDATE Users SET Suspended=? WHERE ID=?', 1, $data->reportID);
         DbHandlerController::query('DELETE FROM Reports WHERE ID=?', $data->reportID);
         return redirect('/reports');
-    } 
+    }
+
+    public function openFollowers($username, $link)
+    {
+        session_start();
+        
+        return view('followers')->with([
+            'username' => $username,
+            'link' => $link,
+        ]);
+    }
 }

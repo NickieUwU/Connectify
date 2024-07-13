@@ -35,21 +35,23 @@
                             {{'@'.$posterUsername}}
                         </span>
                     </div>
-                    <div class='col-lg-6 border d-flex align-items-center justify-content-center position-relative'>
+                    <div class="col-lg-3 d-flex justify-content-center align-items-center border">
+                        <span>{{$postDate}}</span>
+                    </div>
+                    <div class='col-lg-3 border d-flex align-items-center justify-content-center position-relative'>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Menu
                             </button>
                             <ul class="dropdown-menu">
-                                @if($username != $_SESSION['username'])
+                                @if($posterUsername != $_SESSION['username'])
                                     <li><a class="dropdown-item" href="/report/{{$postID}}">Report</a></li>
-                                @elseif($username == $_SESSION['username'])
-                                    <li><a class="dropdown-item" href="#">Delete</a>
+                                @elseif($posterUsername  == $_SESSION['username'])
+                                    <li><a class="dropdown-item" href="/deletePost/{{$postID}}">Delete</a>
                                 @endif
                                 
                             </ul>
                         </div>
-                        <span>{{$postDate}}</span>
                     </div>
                 </div>
                 <div class="row" style="height: 15vh;">

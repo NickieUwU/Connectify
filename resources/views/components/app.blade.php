@@ -21,7 +21,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand ms-4" href="{{url('/home')}}">𝕮</a>
+        <a class="navbar-brand ms-4 fs-2" href="{{url('/home')}}">𝕮</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,17 +29,29 @@
           <ul class="navbar-nav text-center mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active {{request()->is('/') || request()->is('home') ? $disabled : ''}}" aria-current="page" href="{{url('/')}}">
-                <span class="bi bi-house-fill"></span>
+                <span class="bi bi-house-fill">
+                  <div class="d-inline-block d-sm-inline-block d-md-inline-block d-lg-none">
+                    Home
+                  </div>
+                </span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link {{request()->is('create') ? $disabled : ''}}" href="{{url('create')}}">
-                <span class="bi bi-plus-circle-fill"></span>                
+                <span class="bi bi-plus-circle-fill">
+                  <div class="d-inline-block d-sm-inline-block d-md-inline-block d-lg-none">
+                    Create
+                  </div>
+                </span>              
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link {{request()->is('search/*') ? $disabled : ''}}" href="{{url('search/users')}}">
-                <span class="bi bi-search"></span>
+                <span class="bi bi-search">
+                  <div class="d-inline-block d-sm-inline-block d-md-inline-block d-lg-none">
+                    Search
+                  </div>
+                </span>
               </a>
             </li>
           </ul>

@@ -30,6 +30,7 @@ Route::get('/profile/{username}', [ProfileController::class, 'open']);
 Route::post('/ajaxfollow', [ProfileController::class, 'follow']);
 Route::get('/editProfile/{username}', [ProfileController::class, 'openEdit'])->name('editProfile');
 Route::post('/editProfile/{username}', [ProfileController::class, 'save']);
+Route::get('/profile/{username}/{link}', [ProfileController::class, 'openFollowers']);
 
 Route::get('/report/{username}', [ReportController::class, 'openRep']);
 Route::post('/report/{username}', [ReportController::class, 'report']);
@@ -48,3 +49,5 @@ Route::get('/logout', function() {
     session_abort();
     return redirect('/login');
 });
+
+Route::get('/deletePost/{postID}', [PostController::class, 'deletePostUser']);
