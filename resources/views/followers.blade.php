@@ -13,8 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/name.css')}}">
-    <link rel="stylesheet" href="{{asset('css/followers.css')}}">
     <link rel="stylesheet" href="{{asset('css/scroll.css')}}">
+    <link rel="stylesheet" href="{{asset('css/pfp.css')}}">
 </head>
 <body>
     <x-app username="{{$_SESSION['username']}}">
@@ -38,7 +38,6 @@
         <div class="scroll border">
             @if($link == 'followers')
                 @php
-                    //display followers where following = this username
                     $follows = DbHandlerController::queryAll('SELECT * FROM IsFollowed WHERE `Following`=?', $username);
                     foreach($follows as $follow)
                     {
@@ -103,12 +102,6 @@
                 @endphp
             @endif
         </div>
-        <style>
-            .pfp-50 {
-                width: 50px;
-                height: 50px;
-            }
-        </style>
     </x-app>
 </body>
 </html>

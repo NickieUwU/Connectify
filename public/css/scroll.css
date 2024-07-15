@@ -1,9 +1,19 @@
-body {
+body 
+{
     overflow: hidden;
 }
 
-.scroll {
+.scroll 
+{
     height: calc(100vh - 150px);
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.scroll-search
+{
+    height: calc(100vh - 200px);
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
