@@ -173,7 +173,6 @@ class ProfileController extends Controller
     public function openFollowers($username, $link)
     {
         session_start();
-        
         return view('followers')->with([
             'username' => $username,
             'link' => $link,
