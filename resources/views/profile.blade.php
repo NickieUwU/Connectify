@@ -3,83 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connectify / {{$username}}</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{asset('js/ProfileMenu.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('css/profile.css')}}">
-    <script src="{{asset('js/Profile.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('css/pfp.css')}}">
-    <link rel="stylesheet" href="{{asset('css/name.css')}}">
-    <link rel="stylesheet" href="{{asset('css/scroll.css')}}">
+    <title>Connectify / {{"$name (@$username)"}}</title>
+    <link rel="stylesheet" href="{{asset("css/pfp.css")}}">
+    <link rel="stylesheet" href="{{asset("css/scroll.css")}}">
+    <link rel="stylesheet" href="{{asset("css/name.css")}}">
 </head>
 <body>
-    <x-app username="{{$_SESSION['username']}}">
-        <div class="row mt-5">
-            <div class="col-lg-3 col-md-2 d-none d-md-block"></div>
-            <div class="col-3 col-md-2 d-flex justify-content-end align-items-center border">
+    <x-app username="{{$username}}">
+        <div class="row mt-3 d-flex">
+            <div class="col-2 col-md-3 border d-flex align-items-center justify-content-end">
                 <img src="{{asset("images/DefaultPFP.png")}}" alt="pfp" class="pfp-50 img-fluid rounded-circle">
             </div>
-            <div class="col-9 col-md-4 d-flex align-items-center border">
-                <div>
-                    <div class="fs-2">
-                        {{$name}}
-                    </div>
-                    <div class="text-muted fs-6">
-                        {{'@'.$username}}
-                    </div>
+            <div class="col-4 col-md-3 border">
+                <div class="fs-5">
+                    {{$name}}
                 </div>
-                @if($username != $_SESSION['username'])
-                <div class="ms-auto">
-                    <div class="dropdown">
-                        <button class="bg-transparent border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Menu
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="/report/{{$username}}">Report</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="text-muted fs-6">
+                    {{"@$username"}}
                 </div>
-                @endif
             </div>
-            <div class="col-lg-3 col-md-2 d-none d-md-block"></div>
+            @if($_SESSION['username'] != $username)
+                <div class="col-3 col-md-3 d-flex align-items-center border">
+                    {!!$action!!}
+                </div>
+                <div class="col-3 col-md-3 d-flex align-items-center border">
+                    @if($username != $_SESSION['username'])
+                        <div class="ms-1 dropdown">
+                            <button class="bg bg-transparent border border-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Menu
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="/report/{{$username}}">Report</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+            @else
+                <div class="col-5 col-md-6 d-flex align-items-center justify-content-center border">
+                    {!!$action!!}
+                </div>
+            @endif
         </div>
-        <div class="row mt-3">
-            <div class="col-lg-3 col-md-2 d-none d-md-block"></div>
-            <div class="col-lg-3 col-md-2 col-sm text-center border">
-                <div>
-                    <a href="/profile/{{$username}}/followers" class="name-hover text-black me-2">
-                        {{$followers." followers"}}
-                    </a>
-                    <a href="/profile/{{$username}}/following" class="name-hover text-black">
-                        {{$following." following"}}
-                    </a>
-                </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-4 border">
+                <a href="/profile/{{$username}}/followers" class="name-hover text-black d-flex justify-content-end">
+                    {{"$followers followers"}}
+                </a>
             </div>
-            <div class="col-lg-3 col-md-2 col-sm text-center border">
-                {{$joinDate}}{!! $action !!}
+            <div class="col-4 border">
+                <a href="/profile/{{$username}}/following" class="name-hover text-black">
+                    {{"$following following"}}
+                </a>
             </div>
-            <div class="col-lg-3 col-md-2 d-none d-md-block"></div>
+            <div class="col-4 border">
+                <span class="bi bi-calendar3 fs-5"> Joined {{$joinDate}}</span>
+            </div>
         </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-12 text-center border">
+                {{$bio}}
+            </div>
+        </div>
+        <x-Post profileUsername="{{$username}}"></x-Post>
     </x-app>
-<script type="text/javascript">
-    $(document).ready(() => {
-        $('#addFollow').on('submit', (event) => {
-            event.preventDefault();
-            $.ajax({
-                url: '/ajaxfollow',
-                data: jQuery('#addFollow').serialize(),
-                type: 'POST',
-                success: (res) => {
-                },
-                error: (xhr, status, error) => {
-                    console.log(xhr.responseText);
-                }
-            });
-        });
-    });
-</script>
+    
 </body>
 </html>
 

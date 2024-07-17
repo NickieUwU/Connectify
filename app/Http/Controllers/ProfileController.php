@@ -34,11 +34,11 @@ class ProfileController extends Controller
         if($isFollowed == 1)
         {
             $text = "Following";
-            $class = "btn btn-outline-danger mt-5 fs-6";
+            $class = "btn btn-outline-danger fs-6";
         }
         if ($username == $_SESSION['username']) 
         {
-            $action = "<a href='/editProfile/$username' class='btnedit btn btn-secondary mt-5 fs-6'>Edit Profile</a>";
+            $action = "<a href='/editProfile/$username' class='btnedit btn btn-secondary fs-6'>Edit Profile</a>";
         }
         else
         {

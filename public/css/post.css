@@ -1,31 +1,36 @@
-a
+.pfp
+{
+    width: 100%;
+}
+
+body a 
 {
     color: black;
     text-decoration: none;
 }
 
-img
+body a:hover 
 {
-    width: 5%;
-    height: auto;
+    text-decoration: underline;
 }
 
-textarea
+body textarea
 {
     resize: none;
 }
-textarea:hover
+
+body textarea:hover
 {
     cursor: default;
 }
 
-.bi:hover
-{
-    cursor: pointer;
-}
-
-button
+.post-item
 {
     background-color: white;
     border: white;
+}
+
+.menuDiv
+{
+    width: 8%;
 }
