@@ -1,9 +1,9 @@
 <div class="row mt-2">
     <div class="col-4 d-flex justify-content-center border">
-        <form action="{{url('ajaxupload')}}" method="post" id="addLikeForm">
+        <form action="{{url('ajaxupload')}}" method="post" class="addLikeForm">
             <input type="hidden" name="ID" value="{{$userID}}">
             <input type="hidden" name="postID" value="{{$postID}}">
-            <button type="submit" id="btnHeart" class="{{$heartStyle}}" id="heart"></button>
+            <button class="btnHeart {{$heartStyle}}"></button>
         </form>
     </div>
     <div class="col-4 d-flex justify-content-center">
@@ -17,19 +17,21 @@
 </div>
 <script type="text/javascript">
     $(document).ready(() => {
-        $('#addLikeForm').on('submit', (event) => {
-            event.preventDefault();
-            jQuery.ajax({
+        $('.addLikeForm').on('submit', (event) => {
+            event.stopImmediatePropagation();
+            var data = $(event.target).closest('form').serialize();
+            $.ajax({
                 url: "{{url('ajaxupload')}}",
-                data: jQuery('#addLikeForm').serialize(),
+                data: data,
                 type: 'POST',
                 success: (resp) => {
-                    
+                    console.log(resp);
                 },
                 error: (xhr, status, error) => {
                     console.error(xhr.responseText);
                 }
             });
+            return false;
         });
     });
 </script>

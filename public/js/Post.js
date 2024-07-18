@@ -1,15 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('btnHeart').addEventListener('click', () => {
-        let btnHeart = document.getElementById('btnHeart');
-        if(btnHeart.classList.contains('bi-heart'))
-        {
-            btnHeart.classList.remove('bi-heart');
-            btnHeart.classList.add('bi-heart-fill');
-        }
-        else
-        {
-            btnHeart.classList.remove('bi-heart-fill');
-            btnHeart.classList.add('bi-heart');
-        }
+    document.querySelectorAll('.btnHeart').forEach(button => {
+        button.addEventListener('click', function() {
+            if(this.classList.contains('bi-heart'))
+            {
+                this.classList.remove('bi-heart');
+                this.classList.add('bi-heart-fill');
+            }
+            else
+            {
+                this.classList.remove('bi-heart-fill');
+                this.classList.add('bi-heart');
+            }
+        });
     });
 });
