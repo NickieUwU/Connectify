@@ -11,10 +11,36 @@
 <body>
     <x-app username="{{$_SESSION['username']}}">
        <div class="container-fluid border">
-            <div class="scroll" id="Posts">
+            <div class="scroll-home" id="Posts">
+                <x-Post profileUsername=""></x-Post>
+                <x-Post profileUsername=""></x-Post>
+                <x-Post profileUsername=""></x-Post>
+                <x-Post profileUsername=""></x-Post>
+                <x-Post profileUsername=""></x-Post>
+                <x-Post profileUsername=""></x-Post>
                 <x-Post profileUsername=""></x-Post>
             </div>
         </div> 
     </x-app>
+    <script type="text/javascript">
+        $(document).ready(()=>{
+            $('#Posts').scroll(function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "{{url('/')}}",
+                    type: "POST",
+                    data: {
+                        
+                    },
+                    success: (resp) => {
+                        $("#Posts").append(resp);
+                    },
+                    error: (xhr, status, error) => {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
