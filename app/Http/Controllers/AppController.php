@@ -15,9 +15,7 @@ class AppController extends Controller
 
     public function loadMore(Request $request)
     {
-        $data = new \stdClass();
-        return response()->json([
-            'post' => $data->post
-        ]);
+        $post = "<x-Post profileUsername=''></x-Post>";
+        return response()->json(["post" => $post]);
     }
 }
