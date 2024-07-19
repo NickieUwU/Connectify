@@ -33,7 +33,10 @@
                         
                     },
                     success: (resp) => {
-                        $("#Posts").append(resp);
+                        $.each(resp.posts, (index, post) => {
+                            const html = `<div><p>Username: ${post.username}</p><p>Content: ${post.content}</p></div>`;
+                            $("#Posts").append(html);
+                        });
                     },
                     error: (xhr, status, error) => {
                         console.error(xhr.responseText);
