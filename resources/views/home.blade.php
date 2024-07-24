@@ -13,37 +13,14 @@
        <div class="container-fluid border">
             <div class="scroll-home" id="Posts">
                 <x-Post profileUsername=""></x-Post>
-                <x-Post profileUsername=""></x-Post>
-                <x-Post profileUsername=""></x-Post>
-                <x-Post profileUsername=""></x-Post>
-                <x-Post profileUsername=""></x-Post>
-                <x-Post profileUsername=""></x-Post>
-                <x-Post profileUsername=""></x-Post>
             </div>
         </div> 
     </x-app>
+    
     <script type="text/javascript">
-        $(document).ready(()=>{
-            $('#Posts').scroll(function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: "{{url('/')}}",
-                    type: "POST",
-                    data: {
-                        
-                    },
-                    success: (resp) => {
-                        $.each(resp.posts, (index, post) => {
-                            const html = `<div><p>Username: ${post.username}</p><p>Content: ${post.content}</p></div>`;
-                            $("#Posts").append(html);
-                        });
-                    },
-                    error: (xhr, status, error) => {
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
-        });
+        window.onscroll = function(){
+            
+        }
     </script>
 </body>
 </html>

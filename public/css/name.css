@@ -1,8 +1,10 @@
 .name-hover
 {
     text-decoration: none;
+    color: black;
 }
 .name-hover:hover 
 {
     text-decoration: underline;
+    cursor: pointer;
 }

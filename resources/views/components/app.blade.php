@@ -54,11 +54,31 @@
                 </span>
               </a>
             </li>
+            <li class="d-lg-none d-sm-inline-block nav-item">
+              <a href="{{url('/profile/'.$username)}}" class="nav-link {{request()->is('profile/'.$username) ? $disabled : ''}}">
+                <span class="bi bi-person-fill border border-white">
+                  View Profile
+                </span>
+              </a>
+            </li>
+            @if($username == "Connectify")
+              <li class="d-lg-none d-sm-inline-block nav-item">
+                <a href="{{ url('/reports') }}">
+                  Reports
+                </a>
+              </li>
+            @endif
+            <li class="d-lg-none d-sm-inline-block nav-item">
+              <a class="dropdown-item" href="{{ url('/logout') }}">
+                <span class="r w-100 border border-white bi bi-door-open-fill">Logout</span>
+              </a>
+            </li>
+            
           </ul>
           
           
           <ul class="navbar-nav ms-auto me-5">
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown d-lg-block d-md-none d-none d-sm-none">
                 <span class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{$username}}
                 </span>

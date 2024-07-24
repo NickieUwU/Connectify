@@ -1,14 +1,9 @@
 <?php
     use App\Http\Controllers\DbHandlerController;
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('css/post.css')}}">
-    <script src="{{asset('js/Post.js')}}"></script>
-</head>
+<link rel="stylesheet" href="{{asset('css/post.css')}}">
+<link rel="stylesheet" href="{{asset('css/name.css')}}">
+<script src="{{asset('js/Post.js')}}"></script>
 <body>
     <?php 
         if($profileUsername!= $_SESSION['username']) $menu = '<li><a class="dropdown-item" href="/report/{{$postID}}">Report</a></li>';
@@ -41,7 +36,7 @@
                         </div>
                         <div class="col-4 col-md-3 border">
                             <div class="fs-5">
-                                {{ $profileName }}
+                                {{$profileName}}
                             </div>
                             <div class="text-muted fs-6">
                                 {{ '@'.$profileUsername }}
@@ -98,12 +93,14 @@
                     else  $style = "post-item bi bi-heart-fill";
                     ?>
                         <div class="row mt-2">
-                            <div class="col-2 border d-flex align-items-center justify-content-end">
+                            <div class="col-2 d-flex align-items-center justify-content-end">
                                 <img src="{{asset("images/DefaultPFP.png")}}" alt="pfp" class="pfp-50 img-fluid rounded-circle">
                             </div>
-                            <div class="col-3 border">
+                            <div class="col-3">
                                 <div class="fs-5">
-                                    {{$name}}
+                                    <a href="profile/{{$username}}" class="name-hover">
+                                        {{$name}}
+                                    </a>
                                 </div>
                                 <div class="text-muted fs-6">
                                     {{"@$username"}}
@@ -157,4 +154,3 @@
     });
 </script>
 </body>
-</html>

@@ -1,17 +1,17 @@
 <div class="row mt-2">
-    <div class="col-4 d-flex justify-content-center border">
+    <div class="col-4 d-flex justify-content-center border-bottom">
         <form action="{{url('ajaxupload')}}" method="post" class="addLikeForm">
             <input type="hidden" name="ID" value="{{$userID}}">
             <input type="hidden" name="postID" value="{{$postID}}">
             <button class="btnHeart {{$heartStyle}}"></button>
         </form>
     </div>
-    <div class="col-4 d-flex justify-content-center">
+    <div class="col-4 d-flex justify-content-center border-bottom">
         <a href="/post/{{$postID}}">
-            <span class="post-item bi bi-chat-dots"></span>
+            <span class="post-item bi bi-chat-dots text-black"></span>
         </a>
     </div>
-    <div class="col-4 d-flex justify-content-center">
+    <div class="col-4 d-flex justify-content-center border-bottom">
         <span class="post-item bi bi-share"></span>
     </div>
 </div>
@@ -25,7 +25,7 @@
                 data: data,
                 type: 'POST',
                 success: (resp) => {
-                    console.log(resp);
+                    
                 },
                 error: (xhr, status, error) => {
                     console.error(xhr.responseText);
