@@ -18,9 +18,7 @@
     </x-app>
     
     <script type="text/javascript">
-        window.onscroll = function(){
-            
-        }
+        
     </script>
 </body>
 </html>

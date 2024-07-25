@@ -140,19 +140,35 @@ class ProfileController extends Controller
         if(!empty($name))
         {
             DbHandlerController::query("UPDATE Users SET `Name` = ? WHERE Username = ?", $name, $_SESSION['username']);
+            $result = "saves made successfully";
         }
         if(!empty($username))
         {
-            DbHandlerController::query("UPDATE Users SET Username = ? WHERE Username = ?", $username, $_SESSION['username']);
-            $_SESSION['username'] = $username;
+            $users = DbHandlerController::queryAll("SELECT * FROM Users WHERE Username=?", $username);
+            if($users)
+            {
+                foreach($users as $user)
+                {
+                    $otherUsername = $user['Username'];
+                    if($username == $otherUsername) $result = "Unable to make changes, username is already taken";
+                }
+            }
+            else
+            {
+                DbHandlerController::query("UPDATE Users SET Username = ? WHERE Username = ?", $username, $_SESSION['username']);
+                $_SESSION['username'] = $username;
+                $result = "saves made successfully";
+            }
+            
+            
         }
         if(!empty($bio))
         {
             DbHandlerController::query("UPDATE Users SET Bio = ? WHERE Username = ?", $bio, $_SESSION['username']);
+            $result = "saves made successfully";
         }
         
         
-        $result = "saves made successfully";
         return view('editProfile')->with([
             'name' => $name,
             'username' => $username,

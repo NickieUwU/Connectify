@@ -43,6 +43,7 @@ Route::post('/ajaxDeletePost', [PostController::class, 'deleteRepPost']);
 Route::get('/post/{postID}', [PostController::class, 'openFullPost']);
 Route::post('/ajaxAddComment', [CommentsController::class, 'addComment']);
 Route::post('/ajaxDeletePostUser', [PostController::class, 'deletePostUser']);
+Route::get('/deletePost/{postID}', [PostController::class, 'deletePostUser']);
 
 Route::get('/logout', function() {
     session_start();
@@ -51,4 +52,4 @@ Route::get('/logout', function() {
     return redirect('/login');
 });
 
-Route::get('/deletePost/{postID}', [PostController::class, 'deletePostUser']);
+Route::view('/password-reset', 'forgotPassword');
