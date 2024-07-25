@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connectify / Password Reset (provide email)</title>
+    <style>
+        body
+        {
+            overflow: hidden;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row mt-3">
+        <div class="col-2 text-center">
+            <a href="{{url()->previous()}}" class="text-dark fs-1" style="text-decoration: none;"><-</a>
+        </div>
+        <div class="col-10 text-center fs-2">
+            Password reset
+        </div>
+    </div>
+    <div class="row mt-5">
+
+    </div>
+</body>
+</html>

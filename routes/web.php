@@ -52,4 +52,4 @@ Route::get('/logout', function() {
     return redirect('/login');
 });
 
-Route::view('/password-reset', 'forgotPassword');
+Route::view('/password-reset-email', 'forgotPassword');

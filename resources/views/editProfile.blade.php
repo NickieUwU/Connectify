@@ -28,7 +28,7 @@
                         <textarea class="bio w-100" class="w-100" name="Bio" placeholder="{{$bio}}" maxlength="80"></textarea>
                     </div>
                     <div class="col-12 text-center">
-                        <a href="/password-reset">Forgot password</a>
+                        <a href="/password-reset-email">Forgot password</a>
                     </div>
                     <div class="col-lg-12 text-center mt-2">
                         <input type="submit" class="btn btn-secondary" value="Save">
