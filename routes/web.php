@@ -53,3 +53,4 @@ Route::get('/logout', function() {
 });
 
 Route::view('/password-reset-email', 'forgotPassword');
+Route::post('/success', [ProfileController::class, 'sendEmail']);

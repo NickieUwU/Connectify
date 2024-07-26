@@ -21,8 +21,17 @@
             Password reset
         </div>
     </div>
-    <div class="row mt-5">
-
-    </div>
+    <form action="/success" method="post">
+        <div class="row mt-5">
+            <div class="col-12 d-flex justify-content-center">
+                <input type="text" name="email" placeholder="your-email@example.com">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Send reset link</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
