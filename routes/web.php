@@ -8,6 +8,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SigninController;
+use App\Mail\resetMail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AppController::class, 'open']);
@@ -53,4 +54,11 @@ Route::get('/logout', function() {
 });
 
 Route::view('/password-reset-email', 'forgotPassword');
-Route::post('/success', [ProfileController::class, 'sendEmail']);
+Route::get('/success', function()
+{
+    Illuminate\Support\Facades\Mail::to('vlastart.cze555@gmail.com')->send(
+        new resetMail()
+    );
+
+    return view('mail.success');
+});

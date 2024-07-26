@@ -14,10 +14,7 @@
 </head>
 <body>
     <div class="row mt-3">
-        <div class="col-2 text-center">
-            <a href="{{url()->previous()}}" class="text-dark fs-1" style="text-decoration: none;"><-</a>
-        </div>
-        <div class="col-10 text-center fs-2">
+        <div class="col-12 text-center fs-2">
             Password reset
         </div>
     </div>
