@@ -1,3 +1,4 @@
 <h1>Reset password</h1>
-<a href="/password-reset">Click here</a>
-<!-- if the link does not work then provide the link to the user below -->
+<a href="{{url('/password-reset')}}">Click here</a><br>
+if it does not work then use the link below <br>
+http://127.0.0.1:8000/password-reset

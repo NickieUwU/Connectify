@@ -18,7 +18,7 @@
             Password reset
         </div>
     </div>
-    <form action="/success" method="post">
+    <form action="/success" method="get">
         <div class="row mt-5">
             <div class="col-12 d-flex justify-content-center">
                 <input type="text" name="email" placeholder="your-email@example.com">

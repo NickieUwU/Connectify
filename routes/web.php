@@ -62,3 +62,6 @@ Route::get('/success', function()
 
     return view('mail.success');
 });
+Route::get('/password-reset', function() {
+    return view('newPassword');
+});
