@@ -16,6 +16,5 @@ class AppController extends Controller
     public function loadMore(Request $request)
     {
         session_start();
-        
     }
 }
