@@ -34,7 +34,7 @@ class SigninController extends Controller
         }
         DbHandlerController::query("INSERT INTO Users (Name, Username, Password) VALUES (?, ?, ?)", $name, $username, $hash);
         $_SESSION["login"] = true;
-        $username = session('username');
+        $_SESSION['username'] = $username;
         return redirect('/home');
     }
 }
