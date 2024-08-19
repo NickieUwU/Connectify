@@ -11,7 +11,7 @@ use App\Http\Controllers\SigninController;
 use App\Mail\resetMail;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [AppController::class, 'open']);
+Route::get('/', function() { return redirect('/home'); });
 Route::get('/home', [AppController::class, 'open']);
 Route::post('/', [AppController::class, 'loadMore']);
 Route::post('/ajaxupload', [PostController::class, 'addLike']);
@@ -53,9 +53,19 @@ Route::get('/logout', function() {
     return redirect('/login');
 });
 
-Route::view('/password-reset-email', 'forgotPassword');
+Route::get('/password-reset-email', function(){
+    session_start();
+    return view('forgotPassword');
+});
+Route::post('/password-reset-email', function() {
+    $email = request('email');
+    session(['email' => $email]);
+    return redirect('/success');
+});
 Route::get('/success', function()
 {
+    session_start();
+    echo "Reset link sent to ".session('email')."! You can close this window";
     Illuminate\Support\Facades\Mail::to('vlastart.cze555@gmail.com')->send(
         new resetMail()
     );
@@ -65,3 +75,4 @@ Route::get('/success', function()
 Route::get('/password-reset', function() {
     return view('newPassword');
 });
+Route::post('/ajax-passwordReset', [ProfileController::class, 'resetPassword']);

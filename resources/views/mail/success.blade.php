@@ -6,6 +6,6 @@
     <title>Connectify / Success</title>
 </head>
 <body>
-    Reset link sent! You can close this window
+    
 </body>
 </html>

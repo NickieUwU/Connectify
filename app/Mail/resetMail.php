@@ -26,6 +26,7 @@ class resetMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        //sends to mailtrap.com
         return new Envelope(
             subject: 'Reset password link',
 

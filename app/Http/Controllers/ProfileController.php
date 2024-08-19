@@ -194,4 +194,17 @@ class ProfileController extends Controller
             'link' => $link,
         ]);
     }
+
+    public function resetPassword(Request $request, $data)
+    {
+        session_start();
+        $data = new \stdClass();
+        $data->password = $request->input('newPassword');
+        $data->confirm_password = $request->input('confirmNewPassword');
+        if($data->password === $data->confirm_password)
+        {
+            DbHandlerController::query("UPDATE Users SET Password = ? WHERE Username = ?", $data->password, $_SESSION['username']);
+            return redirect("/login");
+        }
+    }
 }
