@@ -12,7 +12,9 @@
     <x-app username="{{$_SESSION['username']}}">
        <div class="container-fluid border">
             <div class="scroll-home" id="Posts">
-                <x-Post profileUsername=""></x-Post>
+                @for($i = 0; $i < 100; $i++)
+                    <x-Post profileUsername=""></x-Post>
+                @endfor
             </div>
         </div> 
     </x-app>

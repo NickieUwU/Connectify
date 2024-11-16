@@ -45,7 +45,7 @@ class ProfileController extends Controller
             $action = "<form action='/ajaxfollow' method='post' id='addFollow'>
                             <input type='hidden' name='username' value='$username'>
                             <button type='submit' id='btnFollow' class='$class'>$text</button>
-                        </form> ";
+                        </form>";
         }
         
         return view('profile', [

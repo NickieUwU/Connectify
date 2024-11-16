@@ -3,7 +3,6 @@
 ?>
 <link rel="stylesheet" href="{{asset('css/post.css')}}">
 <link rel="stylesheet" href="{{asset('css/name.css')}}">
-<script src="{{asset('js/Post.js')}}"></script>
 <body>
     <?php 
         if($profileUsername!= $_SESSION['username']) $menu = '<li><a class="dropdown-item" href="/report/{{$postID}}">Report</a></li>';

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset("css/pfp.css")}}">
     <link rel="stylesheet" href="{{asset("css/scroll.css")}}">
     <link rel="stylesheet" href="{{asset("css/name.css")}}">
+    <script src="{{asset('js/Profile.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
@@ -68,8 +69,28 @@
             </div>
         </div>
         <x-Post profileUsername="{{$username}}"></x-Post>
+        <script type="text/javascript">
+            $(document).ready(()=>{
+                $('#addFollow').on('submit', (event)=>{
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    var data = $(event.target).closest('form').serialize();
+                    $.ajax({
+                        url: "{{url('ajaxfollow')}}",
+                        data: data,
+                        type: 'POST',
+                        success: (resp) => {
+                            console.log(resp);
+                            
+                        },
+                        error: (xhr, status, error) => {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
     </x-app>
-    
 </body>
 </html>
 

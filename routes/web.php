@@ -11,9 +11,8 @@ use App\Http\Controllers\SigninController;
 use App\Mail\resetMail;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function() { return redirect('/home'); });
+Route::get('/', function() { return redirect('/login'); });
 Route::get('/home', [AppController::class, 'open']);
-Route::post('/', [AppController::class, 'loadMore']);
 Route::post('/ajaxupload', [PostController::class, 'addLike']);
 
 Route::get('/login', [SessionController::class, 'open']);

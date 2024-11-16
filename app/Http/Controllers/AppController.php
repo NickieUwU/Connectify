@@ -12,9 +12,4 @@ class AppController extends Controller
         session_start();
         return view('home');
     }
-
-    public function loadMore(Request $request)
-    {
-        session_start();
-    }
 }

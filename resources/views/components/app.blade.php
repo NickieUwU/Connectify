@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav text-center mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active {{request()->is('/') || request()->is('home') ? $disabled : ''}}" aria-current="page" href="{{url('/')}}">
+              <a class="nav-link active {{request()->is('home') ? $disabled : ''}}" aria-current="page" href="{{url('/home')}}">
                 <span class="bi bi-house-fill">
                   <div class="d-inline-block d-sm-inline-block d-md-inline-block d-lg-none">
                     Home
