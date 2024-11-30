@@ -51,7 +51,7 @@
         <div class="row d-flex align-items-center">
             <div class="col-4 border">
                 <a href="/profile/{{$username}}/followers" class="name-hover text-black d-flex justify-content-end">
-                    {{"$followers followers"}}
+                    {!!"<span id='followers' style='margin-right: 0.25rem;'>$followers</span> followers"!!}
                 </a>
             </div>
             <div class="col-4 border">
@@ -80,7 +80,6 @@
                         data: data,
                         type: 'POST',
                         success: (resp) => {
-                            console.log(resp);
                             
                         },
                         error: (xhr, status, error) => {

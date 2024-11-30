@@ -18,14 +18,23 @@
 <script type="text/javascript">
     $(document).ready(() => {
         $('.addLikeForm').on('submit', (event) => {
+            event.preventDefault();
             event.stopImmediatePropagation();
+            const heart = $(event.target).find('.btnHeart');
             var data = $(event.target).closest('form').serialize();
             $.ajax({
                 url: "{{url('ajaxupload')}}",
                 data: data,
                 type: 'POST',
                 success: (resp) => {
-                    
+                    if(heart.hasClass('bi-heart'))
+                    {
+                        heart.removeClass('bi-heart').addClass('bi-heart-fill');
+                    }
+                    else
+                    {
+                        heart.removeClass('bi-heart-fill').addClass('bi-heart');
+                    }
                 },
                 error: (xhr, status, error) => {
                     console.error(xhr.responseText);
