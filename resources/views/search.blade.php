@@ -106,7 +106,7 @@
                                         <div class="row align-items-center mt-2">
                                         <div class="col-lg-3 col-md-2 d-none d-md-block"></div>
                                         <div class="col-lg-6 col-md-8 col-sm-12 d-flex justify-content-center border-bottom">
-                                            <a href="/post/'.$postID.'" class="text-black name-hover fs-4">'.$content.'
+                                            <a href="/post/'.$postID.'" class="text-black name-hover fs-4 text-truncate">'.$content.'
                                         </div>
                                         <div class="col-lg-3 col-md-2 d-none d-md-block "></div>
                                         </div>

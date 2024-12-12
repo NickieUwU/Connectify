@@ -67,6 +67,58 @@
                 }
             }
         }
+        elseif(request()->is('post/*'))
+        {
+            $likes = DbHandlerController::queryAll('SELECT * FROM IsLiked WHERE ID=? AND Post_ID=?', $ID, $postID);
+            $IsLiked = 0;
+            foreach($likes as $like)
+            {
+                $IsLiked = $like['IsLiked'];
+            }
+            $style = "";
+            if($IsLiked == 0) $style = "post-item bi bi-heart";
+            else  $style = "post-item bi bi-heart-fill";
+            ?>
+                <div class="row mt-2">
+                    <div class="col-2 d-flex align-items-center justify-content-end">
+                        <img src="{{asset("images/DefaultPFP.png")}}" alt="pfp" class="pfp-50 img-fluid rounded-circle">
+                    </div>
+                    <div class="col-3">
+                        <div class="fs-5">
+                            <a href="profile/{{$username}}" class="name-hover">
+                                {{$name}}
+                            </a>
+                        </div>
+                        <div class="text-muted fs-6">
+                            {{"@$username"}}
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex align-items-center justify-content-center border">
+                        {{$postDate}}
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center border">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Menu
+                            </button>
+                            <ul class="dropdown-menu">
+                                @if($username!= $_SESSION['username'])
+                                    <li><a class="dropdown-item" href="/report/{{ $postID }}">Report</a></li>
+                                @elseif($username  == $_SESSION['username'])
+                                    <li><a class="dropdown-item" href="/deletePost/{{ $postID }}">Delete</a></li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center border">
+                        {{$content}}
+                    </div>
+                </div>
+                <x-postOpts userID="{{$ID}}" postID="{{$postID}}" heartStyle="{{$style}}"></x-postOpts>
+            <?php
+        }
         elseif(request()->is('home') || request()->is('/'))
         {
             $posts = DbHandlerController::queryAll('SELECT * FROM Posts ORDER BY RAND() LIMIT 1');

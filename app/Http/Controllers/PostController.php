@@ -63,37 +63,27 @@ class PostController extends Controller
     {
         session_start();
         $posts = DbHandlerController::queryAll('SELECT * FROM Posts WHERE Post_ID=?', $postID);
-        if(!$posts) return redirect('/home');
         foreach($posts as $post)
         {
-            $content = $post['Content'];
-            $ID = $post['ID'];
-            $postDate = $post['PostDate'];
+            $ID = $post["ID"];
+            $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE ID=?', $ID);
+            foreach($users as $user)
+            {
+                $ID = $user["ID"];
+                $name = $user["Name"];
+                $username = $user["Username"];
+                $content = $post["Content"];
+                $postDate = $post["PostDate"];
+                $likes = $post["Likes"];
+            }
         }
-        $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE ID=?', $ID);
-        foreach($users as $user)
-        {
-            $posterName = $user['Name'];
-            $posterUsername = $user['Username'];
-        }
-        $likes = DbHandlerController::queryAll('SELECT * FROM IsLiked WHERE ID=? AND Post_ID=?', $ID, $postID);
-        $IsLiked = 0;
-        foreach($likes as $like)
-        {
-            $IsLiked = $like['IsLiked'];
-        }
-        $style = "";
-        if($IsLiked == 0) $style = "post-item bi bi-heart";
-        else  $style = "post-item bi bi-heart-fill";
-        return view('post')->with([
-            'postID' => $postID,
-            'ID' => $ID,
-            'posterName' => $posterName,
-            'posterUsername' => $posterUsername,
-            'content' => $content,
-            'postDate' => $postDate,
-            'style' => $style
-        ]);
+        return view('post')->with(["ID"=>$ID,
+                                                "name"=>$name,
+                                                "username"=>$username,
+                                                "postID"=>$postID,
+                                                "content"=>$content,
+                                                "postDate"=>$postDate,
+                                                "likes"=>$likes]);
     }
 
     public function deleteRepPost(Request $request)
