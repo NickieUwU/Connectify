@@ -1,12 +1,13 @@
 @php
     use App\Http\Controllers\DbHandlerController;
-    $comments = DbHandlerController::queryAll('SELECT * FROM Comments WHERE Post_ID=?', $postID);
+    $comments = DbHandlerController::queryAll('SELECT * FROM comments WHERE Post_ID=?', $postID);
+    if($comments==null) echo"";
     foreach($comments as $comment)
     {
         $commentContent = $comment['CommentContent'];
         $commentDate = $comment['CommentDate'];
         $ID = $comment['ID'];
-        $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE ID=?', $ID);
+        $users = DbHandlerController::queryAll('SELECT * FROM users WHERE ID=?', $ID);
         foreach($users as $user)
         {
             $name = $user['Name'];
@@ -41,3 +42,8 @@
     }
     
 @endphp
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    });
+</script>

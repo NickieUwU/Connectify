@@ -7,6 +7,7 @@
     <?php 
         if($profileUsername != $_SESSION['username']) $menu = '<li><a class="dropdown-item" href="/report/{{$postID}}">Report</a></li>';
         elseif($profileUsername  == $_SESSION['username']) $menu = '<li><a class="dropdown-item" href="/deletePost/{{$postID}}">Delete</a>';
+        $ID="";
         if(request()->is('profile/*'))
         {
             $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE Username=?', $profileUsername);
@@ -117,7 +118,7 @@
                     </div>
                 </div>
                 @if($ID !== null)
-                    <x-postOpts userID="{{$loggedID}}" postID="{{$postID}}" heartStyle="{{$style}}"></x-postOpts>
+                <x-postOpts userID="{{$loggedID}}" postID="{{$postID}}" heartStyle="{{$style}}"></x-postOpts>
                 @endif
             <?php
         }
