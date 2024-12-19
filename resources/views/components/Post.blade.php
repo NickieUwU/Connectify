@@ -1,14 +1,14 @@
 <?php
     use App\Http\Controllers\DbHandlerController;
-?>
+    use Illuminate\Support\Facades\Route;
+?>  
 <link rel="stylesheet" href="{{asset('css/post.css')}}">
 <link rel="stylesheet" href="{{asset('css/name.css')}}">
 <body>
     <?php 
         if($profileUsername != $_SESSION['username']) $menu = '<li><a class="dropdown-item" href="/report/{{$postID}}">Report</a></li>';
         elseif($profileUsername  == $_SESSION['username']) $menu = '<li><a class="dropdown-item" href="/deletePost/{{$postID}}">Delete</a>';
-        $ID="";
-        if(request()->is('profile/*'))
+        if(Route::currentRouteName() === "profile.*")
         {
             $users = DbHandlerController::queryAll('SELECT * FROM Users WHERE Username=?', $profileUsername);
             foreach($users as $user)
@@ -68,7 +68,7 @@
                 }
             }
         }
-        elseif(request()->is('post/*'))
+        elseif(Route::currentRouteName() === "post.*")
         {
             $likes = DbHandlerController::queryAll('SELECT * FROM IsLiked WHERE ID=? AND Post_ID=?', $ID, $postID);
             $IsLiked = 0;
@@ -122,7 +122,7 @@
                 @endif
             <?php
         }
-        elseif(request()->is('home') || request()->is('/'))
+        elseif(Route::currentRouteName() === "home")
         {
             $posts = DbHandlerController::queryAll('SELECT * FROM Posts ORDER BY RAND() LIMIT 1');
             foreach($posts as $post)

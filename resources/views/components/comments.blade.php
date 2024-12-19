@@ -1,7 +1,7 @@
 @php
     use App\Http\Controllers\DbHandlerController;
     $comments = DbHandlerController::queryAll('SELECT * FROM comments WHERE Post_ID=?', $postID);
-    if($comments==null) echo"";
+    if($comments==null) return;
     foreach($comments as $comment)
     {
         $commentContent = $comment['CommentContent'];

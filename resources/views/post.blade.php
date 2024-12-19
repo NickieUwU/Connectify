@@ -16,7 +16,7 @@
         <div class="row d-flex">
             <div class="col-12">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Comment as {{$_SESSION["username"]}}" aria-label="Comment as {{$_SESSION["username"]}}" aria-describedby="btnMakeComment">
+                    <input type="text" class="form-control" placeholder="Comment as {{"@".$_SESSION["username"]}}" aria-label="Comment as {{$_SESSION["username"]}}" aria-describedby="btnMakeComment">
                     <button class="btn btn-outline-success" type="button" id="btnMakeComment"><i class="bi bi-send"></i></button>
                 </div>
             </div>
