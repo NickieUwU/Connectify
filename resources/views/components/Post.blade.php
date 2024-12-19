@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{asset('css/name.css')}}">
 <body>
     <?php 
-        if($profileUsername!= $_SESSION['username']) $menu = '<li><a class="dropdown-item" href="/report/{{$postID}}">Report</a></li>';
+        if($profileUsername != $_SESSION['username']) $menu = '<li><a class="dropdown-item" href="/report/{{$postID}}">Report</a></li>';
         elseif($profileUsername  == $_SESSION['username']) $menu = '<li><a class="dropdown-item" href="/deletePost/{{$postID}}">Delete</a>';
         if(request()->is('profile/*'))
         {
@@ -116,7 +116,9 @@
                         {{$content}}
                     </div>
                 </div>
-                <x-postOpts userID="{{$ID}}" postID="{{$postID}}" heartStyle="{{$style}}"></x-postOpts>
+                @if($ID !== null)
+                    <x-postOpts userID="{{$loggedID}}" postID="{{$postID}}" heartStyle="{{$style}}"></x-postOpts>
+                @endif
             <?php
         }
         elseif(request()->is('home') || request()->is('/'))

@@ -1,3 +1,6 @@
+@php
+    $loggedID = $loggedID[0]['ID'];
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,7 @@
     <x-app username="{{$_SESSION['username']}}">
         <x-Post profileUsername="" name="{{$name}}"
         username="{{$username}}" content="{{$content}}" postID="{{$postID}}"
-        postDate="{{$postDate}}" likes="{{$likes}}" ID="{{$ID}}"></x-Post>
+        postDate="{{$postDate}}" likes="{{$likes}}" loggedID="{{$loggedID}}"></x-Post>
     </x-app>
 </body>
 </html>

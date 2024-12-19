@@ -77,13 +77,16 @@ class PostController extends Controller
                 $likes = $post["Likes"];
             }
         }
+
+        $loggedID = DbHandlerController::query("SELECT ID FROM users WHERE Username=?", $_SESSION["username"]);
         return view('post')->with(["ID"=>$ID,
                                                 "name"=>$name,
                                                 "username"=>$username,
                                                 "postID"=>$postID,
                                                 "content"=>$content,
                                                 "postDate"=>$postDate,
-                                                "likes"=>$likes]);
+                                                "likes"=>$likes,
+                                                "loggedID"=>$loggedID]);
     }
 
     public function deleteRepPost(Request $request)
